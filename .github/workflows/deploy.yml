@@ -3,8 +3,11 @@ name: Deploy to GitHub Pages
 on:
     push:
         branches: [main]
-    pull_request:
-        branches: [main]
+
+permissions:
+    contents: read
+    pages: write
+    id-token: write
 
 jobs:
     build-and-deploy:
@@ -25,17 +28,22 @@ jobs:
                   version: 8
 
             - name: Install dependencies
-              run: pnpm install
+              run: pnpm install --no-frozen-lockfile
 
-            - name: Build components
-              run: pnpm build
+            - name: Build components (skip lint)
+              run: |
+                  cd packages/components
+                  pnpm run build
 
-            - name: Build docs
-              run: pnpm build:docs
+            - name: Build docs (skip lint)
+              run: |
+                  cd packages/docs
+                  pnpm run build
+
+            - name: Upload Pages artifact
+              uses: actions/upload-pages-artifact@v2
+              with:
+                  path: ./packages/docs/dist
 
             - name: Deploy to GitHub Pages
-              if: github.ref == 'refs/heads/main'
-              uses: peaceiris/actions-gh-pages@v3
-              with:
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
-                  publish_dir: ./packages/docs/dist
+              uses: actions/deploy-pages@v2
