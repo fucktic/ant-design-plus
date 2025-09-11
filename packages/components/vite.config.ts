@@ -2,13 +2,14 @@
  * @Author: xuwei
  * @Date: 2025-09-11 00:14:49
  * @LastEditors: lisaxw lisaxw@qq.com
- * @LastEditTime: 2025-09-11 15:16:21
+ * @LastEditTime: 2025-09-11 16:25:09
  * @Description: Do not edit
  */
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import dts from 'vite-plugin-dts'
 import { resolve } from 'path'
+import { fileURLToPath, URL } from 'node:url'
 
 export default defineConfig({
     plugins: [
@@ -20,7 +21,7 @@ export default defineConfig({
     ],
     build: {
         lib: {
-            entry: resolve(__dirname, 'src/index.ts'),
+            entry: resolve(fileURLToPath(new URL('.', import.meta.url)), 'src/index.ts'),
             name: 'AntDesignPlus',
             formats: ['es', 'umd'],
             fileName: (format) => `index.${format === 'es' ? 'esm' : format}.js`,
