@@ -2,12 +2,17 @@
  * @Author: xuwei
  * @Date: 2025-09-11 00:14:34
  * @LastEditors: lisaxw lisaxw@qq.com
- * @LastEditTime: 2025-09-11 15:43:31
+ * @LastEditTime: 2025-09-11 15:53:44
  * @Description: Do not edit
 -->
+
 # Ant Design +
 
 一个基于 Ant Design 的 React 组件库，提供更多实用的业务组件。
+
+## 🌟 在线演示
+
+📖 **文档地址**: [https://fucktic.github.io/ant-design-plus/](https://fucktic.github.io/ant-design-plus/)
 
 ## 特性
 
@@ -21,17 +26,17 @@
 ## 安装
 
 ```bash
-npm install @ant-design-plus/components
+npm install @ant-design-plus/ui
 # 或
-yarn add @ant-design-plus/components
+yarn add @ant-design-plus/ui
 # 或
-pnpm add @ant-design-plus/components
+pnpm add @ant-design-plus/ui
 ```
 
 ## 使用
 
 ```tsx
-import { Button } from '@ant-design-plus/components'
+import { Button } from '@ant-design-plus/ui'
 
 function App() {
     return <Button type="primary">Hello World</Button>
