@@ -1,0 +1,6 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "Running lint and prettier check before push..."
+npm run format:check || true
+npm run lint || true

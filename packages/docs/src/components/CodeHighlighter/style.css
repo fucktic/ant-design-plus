@@ -1,0 +1,81 @@
+.code-highlighter {
+    overflow: hidden;
+}
+
+.code-highlighter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    font-size: 12px;
+}
+
+.code-language-tag {
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.code-action-btn {
+    font-size: 12px !important;
+    height: 24px !important;
+    padding: 0 8px !important;
+}
+
+.code-highlighter-content {
+    position: relative;
+    overflow-x: auto;
+}
+
+/* 覆盖 react-syntax-highlighter 的默认样式 */
+.code-highlighter-content pre[class*='language-'] {
+    margin: 0 !important;
+    padding: 16px !important;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;
+    font-size: 13px !important;
+    line-height: 1.45 !important;
+}
+
+/* 选中代码时的样式 */
+.code-highlighter-content *::selection {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.code-highlighter-content *::-moz-selection {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* 滚动条样式 - 使用CSS变量，由主题系统控制 */
+.code-highlighter-content::-webkit-scrollbar {
+    height: 8px;
+}
+
+.code-highlighter-content::-webkit-scrollbar-track {
+    background: var(--ant-color-fill-quaternary, #f5f5f5);
+    border-radius: 4px;
+}
+
+.code-highlighter-content::-webkit-scrollbar-thumb {
+    background: var(--ant-color-fill-secondary, #d9d9d9);
+    border-radius: 4px;
+}
+
+.code-highlighter-content::-webkit-scrollbar-thumb:hover {
+    background: var(--ant-color-fill, #bfbfbf);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .code-highlighter-header {
+        padding: 6px 8px;
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+    }
+
+    .code-highlighter-content pre[class*='language-'] {
+        padding: 12px !important;
+        font-size: 12px !important;
+    }
+}
