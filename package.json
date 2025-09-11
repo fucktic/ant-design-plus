@@ -8,7 +8,7 @@
     ],
     "scripts": {
         "dev": "pnpm --filter @ant-design-plus/docs dev",
-        "build": "pnpm --filter @ant-design-plus/ui build",
+        "build": "pnpm --filter ant-design-plus-ui build",
         "build:docs": "pnpm --filter @ant-design-plus/docs build",
         "build:all": "pnpm build && pnpm build:docs",
         "preview:docs": "pnpm --filter @ant-design-plus/docs preview",
@@ -16,7 +16,7 @@
         "lint:fix": "eslint packages --ext .ts,.tsx,.js,.jsx --fix",
         "type-check": "tsc --noEmit",
         "clean": "rimraf packages/*/dist packages/*/node_modules",
-        "publish:components": "pnpm --filter @ant-design-plus/ui publish",
+        "publish:components": "pnpm --filter ant-design-plus-ui publish",
         "changeset": "changeset",
         "version-packages": "changeset version",
         "release": "pnpm build && changeset publish",
