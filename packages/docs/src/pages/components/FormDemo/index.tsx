@@ -1,6 +1,6 @@
 import React from 'react'
 import { Typography, Input, Button, Select, DatePicker, Divider, message, theme } from 'antd'
-import { Form } from '@ant-design-plus/ui'
+import { Form } from 'ant-design-plus-ui'
 import DemoContainer from '../../../components/DemoContainer'
 import CodeHighlighter from '../../../components/CodeHighlighter'
 
@@ -48,7 +48,7 @@ const FormDemo: React.FC = () => {
                     description="基本的表单数据域控制展示，包含布局、初始化、验证、提交。"
                     code={`import React from 'react';
 import { Input, Button, Select, DatePicker, message } from 'antd';
-import { Form } from '@ant-design-plus/ui';
+import { Form } from 'ant-design-plus-ui';
 
 const { Option } = Select;
 
@@ -215,7 +215,7 @@ export default BasicExample;`}
                     description="通过设置 compact 属性来显示紧凑表单。"
                     code={`import React from 'react';
 import { Input, Button } from 'antd';
-import { Form } from '@ant-design-plus/ui';
+import { Form } from 'ant-design-plus-ui';
 
 const CompactExample = () => {
   return (

@@ -52,11 +52,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         },
         {
             key: 'general',
-            label: (
-                <div className="text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wider px-3 py-2">
-                    通用
-                </div>
-            ),
+            label: <div>通用</div>,
             type: 'group' as const,
             children: [
                 {
@@ -74,11 +70,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         },
         {
             key: 'data-display',
-            label: (
-                <div className="text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wider px-3 py-2">
-                    数据展示
-                </div>
-            ),
+            label: <div>数据展示</div>,
             type: 'group' as const,
             children: [
                 {
@@ -107,11 +99,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         },
         {
             key: 'data-entry',
-            label: (
-                <div className="text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wider px-3 py-2">
-                    数据录入
-                </div>
-            ),
+            label: <div>数据录入</div>,
             type: 'group' as const,
             children: [
                 {

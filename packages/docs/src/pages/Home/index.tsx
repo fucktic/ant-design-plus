@@ -2,7 +2,7 @@
  * @Author: xuwei
  * @Date: 2025-09-11 00:19:33
  * @LastEditors: lisaxw lisaxw@qq.com
- * @LastEditTime: 2025-09-11 16:38:24
+ * @LastEditTime: 2025-09-11 17:51:15
  * @Description: Do not edit
  */
 import React from 'react'
@@ -358,11 +358,11 @@ const Home: React.FC = () => {
                                     使用您喜欢的包管理器安装：
                                 </Text>
                                 <CodeHighlighter
-                                    code={`npm install @ant-design-plus/ui
+                                    code={`npm install ant-design-plus-ui
 # 或
-yarn add @ant-design-plus/ui
+yarn add ant-design-plus-ui
 # 或
-pnpm add @ant-design-plus/ui`}
+pnpm add ant-design-plus-ui`}
                                     language="bash"
                                 />
                             </div>
@@ -385,7 +385,7 @@ pnpm add @ant-design-plus/ui`}
                                     在您的 React 项目中导入并使用：
                                 </Text>
                                 <CodeHighlighter
-                                    code={`import { Button } from '@ant-design-plus/ui';
+                                    code={`import { Button } from 'ant-design-plus-ui';
 
 function App() {
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Typography, Space, Divider, theme } from 'antd'
-import { Button } from '@ant-design-plus/ui'
+import { Button } from 'ant-design-plus-ui'
 import { SearchOutlined, DownloadOutlined } from '@ant-design/icons'
 import DemoContainer from '../../../components/DemoContainer'
 import CodeHighlighter from '../../../components/CodeHighlighter'
@@ -53,7 +53,7 @@ const ButtonDemo: React.FC = () => {
                     description="基本的按钮用法，支持多种类型。"
                     code={`import React from 'react';
 import { Space } from 'antd';
-import { Button } from '@ant-design-plus/ui';
+import { Button } from 'ant-design-plus-ui';
 
 const BasicExample = () => {
   return (
@@ -83,7 +83,7 @@ export default BasicExample;`}
                     description="添加 loading 属性即可让按钮处于加载状态。"
                     code={`import React, { useState } from 'react';
 import { Space } from 'antd';
-import { Button } from '@ant-design-plus/ui';
+import { Button } from 'ant-design-plus-ui';
 
 const LoadingExample = () => {
   const [loading, setLoading] = useState(false);
@@ -130,7 +130,7 @@ export default LoadingExample;`}
                     code={`import React from 'react';
 import { Space } from 'antd';
 import { SearchOutlined, DownloadOutlined } from '@ant-design/icons';
-import { Button } from '@ant-design-plus/ui';
+import { Button } from 'ant-design-plus-ui';
 
 const IconExample = () => {
   return (
@@ -168,7 +168,7 @@ export default IconExample;`}
                     description="按钮有大、中、小三种尺寸。"
                     code={`import React from 'react';
 import { Space } from 'antd';
-import { Button } from '@ant-design-plus/ui';
+import { Button } from 'ant-design-plus-ui';
 
 const SizeExample = () => {
   return (

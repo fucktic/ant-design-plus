@@ -117,7 +117,7 @@ export default UserComponent;`
     "lint": "eslint src --ext .ts,.tsx"
   },
   "dependencies": {
-    '@ant-design-plus/ui': "^5.27.3",
+    'ant-design-plus-ui': "^5.27.3",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },

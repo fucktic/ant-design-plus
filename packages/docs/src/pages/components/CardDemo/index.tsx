@@ -1,6 +1,6 @@
 import React from 'react'
 import { Typography, Row, Col, Divider, Card as AntdCard, theme } from 'antd'
-import { Card } from '@ant-design-plus/ui'
+import { Card } from 'ant-design-plus-ui'
 import DemoContainer from '../../../components/DemoContainer'
 import CodeHighlighter from '../../../components/CodeHighlighter'
 
@@ -36,7 +36,7 @@ const CardDemo: React.FC = () => {
                     description="包含标题、内容、操作区域。"
                     code={`import React from 'react';
 import { Row, Col } from 'antd';
-import { Card } from '@ant-design-plus/ui';
+import { Card } from 'ant-design-plus-ui';
 
 const BasicExample = () => {
   return (
@@ -90,7 +90,7 @@ export default BasicExample;`}
                     title="无边框"
                     description="在灰色背景上使用无边框的卡片。"
                     code={`import React from 'react';
-import { Card } from '@ant-design-plus/ui';
+import { Card } from 'ant-design-plus-ui';
 
 const BorderlessExample = () => {
   return (
@@ -122,7 +122,7 @@ export default BorderlessExample;`}
                     title="简洁卡片"
                     description="只包含内容区域。"
                     code={`import React from 'react';
-import { Card } from '@ant-design-plus/ui';
+import { Card } from 'ant-design-plus-ui';
 
 const SimpleExample = () => {
   return (
@@ -147,7 +147,7 @@ export default SimpleExample;`}
                     title="更灵活的内容展示"
                     description="可以调整默认边距，设定宽度。"
                     code={`import React from 'react';
-import { Card } from '@ant-design-plus/ui';
+import { Card } from 'ant-design-plus-ui';
 import { Card as AntdCard } from 'antd';
 
 const { Meta } = AntdCard;

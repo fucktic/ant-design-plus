@@ -1,6 +1,6 @@
 import React from 'react'
 import { Typography, Divider, Tag, Space, theme } from 'antd'
-import { Table } from '@ant-design-plus/ui'
+import { Table } from 'ant-design-plus-ui'
 import DemoContainer from '../../../components/DemoContainer'
 import CodeHighlighter from '../../../components/CodeHighlighter'
 
@@ -111,7 +111,7 @@ const TableDemo: React.FC = () => {
                     description="简单的表格，最后一列是各种操作。"
                     code={`import React from 'react';
 import { Tag, Space } from 'antd';
-import { Table } from '@ant-design-plus/ui';
+import { Table } from 'ant-design-plus-ui';
 
 const BasicExample = () => {
   const columns = [
@@ -202,7 +202,7 @@ export default BasicExample;`}
                     title="斑马纹表格"
                     description="通过设置 striped 属性来显示斑马纹。"
                     code={`import React from 'react';
-import { Table } from '@ant-design-plus/ui';
+import { Table } from 'ant-design-plus-ui';
 
 const StripedExample = () => {
   // columns 和 data 定义同上...
@@ -223,7 +223,7 @@ export default StripedExample;`}
                     title="紧凑表格"
                     description="通过设置 compact 属性来显示紧凑表格。"
                     code={`import React from 'react';
-import { Table } from '@ant-design-plus/ui';
+import { Table } from 'ant-design-plus-ui';
 
 const CompactExample = () => {
   // columns 和 data 定义同上...
@@ -244,7 +244,7 @@ export default CompactExample;`}
                     title="组合使用"
                     description="斑马纹 + 紧凑模式。"
                     code={`import React from 'react';
-import { Table } from '@ant-design-plus/ui';
+import { Table } from 'ant-design-plus-ui';
 
 const CombinedExample = () => {
   // columns 和 data 定义同上...
