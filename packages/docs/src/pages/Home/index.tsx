@@ -2,7 +2,7 @@
  * @Author: xuwei
  * @Date: 2025-09-11 00:19:33
  * @LastEditors: lisaxw lisaxw@qq.com
- * @LastEditTime: 2025-09-11 16:34:47
+ * @LastEditTime: 2025-09-11 16:38:24
  * @Description: Do not edit
  */
 import React from 'react'
@@ -62,22 +62,23 @@ const Home: React.FC = () => {
             <div
                 style={{
                     background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                    padding: '80px 0 120px',
+                    padding: '100px 0 140px',
                     textAlign: 'center',
                     position: 'relative',
-                    marginBottom: 80,
-                    borderRadius: '0 0 50px 50px',
+                    marginBottom: 100,
+                    borderRadius: '0 0 60px 60px',
+                    overflow: 'hidden',
                 }}
             >
                 {/* 装饰性背景元素 */}
                 <div
                     style={{
                         position: 'absolute',
-                        top: '20%',
-                        left: '10%',
-                        width: 100,
-                        height: 100,
-                        background: 'rgba(255, 255, 255, 0.1)',
+                        top: '15%',
+                        left: '8%',
+                        width: 120,
+                        height: 120,
+                        background: 'rgba(255, 255, 255, 0.08)',
                         borderRadius: '50%',
                         animation: 'float 6s ease-in-out infinite',
                     }}
@@ -85,13 +86,37 @@ const Home: React.FC = () => {
                 <div
                     style={{
                         position: 'absolute',
-                        top: '60%',
-                        right: '15%',
-                        width: 60,
-                        height: 60,
-                        background: 'rgba(255, 255, 255, 0.1)',
+                        top: '65%',
+                        right: '12%',
+                        width: 80,
+                        height: 80,
+                        background: 'rgba(255, 255, 255, 0.08)',
                         borderRadius: '50%',
                         animation: 'float 4s ease-in-out infinite reverse',
+                    }}
+                />
+                <div
+                    style={{
+                        position: 'absolute',
+                        top: '30%',
+                        right: '25%',
+                        width: 40,
+                        height: 40,
+                        background: 'rgba(255, 255, 255, 0.06)',
+                        borderRadius: '50%',
+                        animation: 'float 8s ease-in-out infinite',
+                    }}
+                />
+                <div
+                    style={{
+                        position: 'absolute',
+                        bottom: '20%',
+                        left: '20%',
+                        width: 60,
+                        height: 60,
+                        background: 'rgba(255, 255, 255, 0.06)',
+                        borderRadius: '50%',
+                        animation: 'float 5s ease-in-out infinite reverse',
                     }}
                 />
 
@@ -102,6 +127,7 @@ const Home: React.FC = () => {
                 >
                     <Title
                         level={1}
+                        className="hero-title"
                         style={{
                             color: 'white',
                             fontSize: '4rem',
@@ -115,6 +141,7 @@ const Home: React.FC = () => {
                 </Badge.Ribbon>
 
                 <Paragraph
+                    className="hero-subtitle"
                     style={{
                         fontSize: 20,
                         color: 'rgba(255, 255, 255, 0.9)',
@@ -149,7 +176,10 @@ const Home: React.FC = () => {
                     ))}
                 </Row>
 
-                <Space size="large">
+                <Space
+                    size="large"
+                    className="hero-buttons"
+                >
                     <Button
                         type="primary"
                         size="large"
@@ -178,37 +208,47 @@ const Home: React.FC = () => {
                             padding: '0 32px',
                             fontSize: 16,
                             borderRadius: 25,
-                            background: 'transparent',
-                            border: '2px solid rgba(255, 255, 255, 0.5)',
+                            background: 'rgba(255, 255, 255, 0.15)',
+                            border: '2px solid rgba(255, 255, 255, 0.3)',
                             color: 'white',
+                            backdropFilter: 'blur(10px)',
                         }}
                         icon={<GithubOutlined />}
+                        onClick={() =>
+                            window.open('https://github.com/fucktic/ant-design-plus', '_blank')
+                        }
                     >
-                        <a
-                            href="https://github.com/fucktic/ant-design-plus"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={{ color: 'white' }}
-                        >
-                            GitHub
-                        </a>
+                        GitHub
                     </Button>
                 </Space>
             </div>
 
             {/* Features Section */}
             <div style={{ padding: '0 24px', maxWidth: 1200, margin: '0 auto' }}>
-                <div style={{ textAlign: 'center', marginBottom: 60 }}>
+                <div style={{ textAlign: 'center', marginBottom: 80 }}>
                     <Title
                         level={2}
-                        style={{ fontSize: '2.5rem', marginBottom: 16 }}
+                        style={{
+                            fontSize: '3rem',
+                            marginBottom: 24,
+                            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            backgroundClip: 'text',
+                        }}
                     >
                         ✨ 核心特性
                     </Title>
                     <Paragraph
-                        style={{ fontSize: 18, color: '#666', maxWidth: 600, margin: '0 auto' }}
+                        style={{
+                            fontSize: 20,
+                            color: '#666',
+                            maxWidth: 700,
+                            margin: '0 auto',
+                            lineHeight: 1.8,
+                        }}
                     >
-                        我们致力于提供最优秀的开发体验和用户体验
+                        我们致力于提供最优秀的开发体验和用户体验，让每一个开发者都能轻松构建出色的应用
                     </Paragraph>
                 </div>
 
@@ -219,26 +259,29 @@ const Home: React.FC = () => {
                             sm={12}
                             lg={6}
                             key={index}
+                            className="feature-card"
                         >
                             <Card
                                 hoverable
                                 style={{
                                     textAlign: 'center',
                                     height: '100%',
-                                    borderRadius: 16,
+                                    borderRadius: 20,
                                     border: 'none',
-                                    boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
-                                    transition: 'all 0.3s ease',
+                                    boxShadow: '0 10px 40px rgba(0,0,0,0.08)',
+                                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                                     overflow: 'hidden',
+                                    background: 'linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%)',
                                 }}
-                                bodyStyle={{ padding: 32 }}
+                                bodyStyle={{ padding: 40 }}
                                 onMouseEnter={(e) => {
-                                    e.currentTarget.style.transform = 'translateY(-8px)'
-                                    e.currentTarget.style.boxShadow = '0 16px 48px rgba(0,0,0,0.15)'
+                                    e.currentTarget.style.transform =
+                                        'translateY(-12px) scale(1.02)'
+                                    e.currentTarget.style.boxShadow = '0 20px 60px rgba(0,0,0,0.12)'
                                 }}
                                 onMouseLeave={(e) => {
-                                    e.currentTarget.style.transform = 'translateY(0)'
-                                    e.currentTarget.style.boxShadow = '0 8px 32px rgba(0,0,0,0.1)'
+                                    e.currentTarget.style.transform = 'translateY(0) scale(1)'
+                                    e.currentTarget.style.boxShadow = '0 10px 40px rgba(0,0,0,0.08)'
                                 }}
                             >
                                 <div
@@ -362,8 +405,56 @@ function App() {
             {/* 添加 CSS 动画 */}
             <style>{`
                 @keyframes float {
-                    0%, 100% { transform: translateY(0px); }
-                    50% { transform: translateY(-20px); }
+                    0%, 100% { transform: translateY(0px) rotate(0deg); }
+                    50% { transform: translateY(-20px) rotate(5deg); }
+                }
+                
+                @keyframes pulse {
+                    0%, 100% { transform: scale(1); opacity: 0.8; }
+                    50% { transform: scale(1.05); opacity: 1; }
+                }
+                
+                @keyframes slideInUp {
+                    from {
+                        transform: translateY(30px);
+                        opacity: 0;
+                    }
+                    to {
+                        transform: translateY(0);
+                        opacity: 1;
+                    }
+                }
+                
+                @keyframes fadeInScale {
+                    from {
+                        transform: scale(0.8);
+                        opacity: 0;
+                    }
+                    to {
+                        transform: scale(1);
+                        opacity: 1;
+                    }
+                }
+                
+                .feature-card {
+                    animation: slideInUp 0.6s ease-out;
+                }
+                
+                .feature-card:nth-child(1) { animation-delay: 0.1s; }
+                .feature-card:nth-child(2) { animation-delay: 0.2s; }
+                .feature-card:nth-child(3) { animation-delay: 0.3s; }
+                .feature-card:nth-child(4) { animation-delay: 0.4s; }
+                
+                .hero-title {
+                    animation: fadeInScale 1s ease-out;
+                }
+                
+                .hero-subtitle {
+                    animation: slideInUp 1s ease-out 0.3s both;
+                }
+                
+                .hero-buttons {
+                    animation: slideInUp 1s ease-out 0.6s both;
                 }
             `}</style>
         </div>
