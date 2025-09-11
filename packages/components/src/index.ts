@@ -17,4 +17,3 @@ export type { CardProps } from './components/Card'
 export type { TableProps } from './components/Table'
 
 // 导出工具函数
-export * from './utils'
