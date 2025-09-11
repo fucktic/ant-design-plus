@@ -2,7 +2,7 @@
  * @Author: xuwei
  * @Date: 2025-09-11 00:14:59
  * @LastEditors: lisaxw lisaxw@qq.com
- * @LastEditTime: 2025-09-11 16:42:08
+ * @LastEditTime: 2025-09-11 16:45:02
  * @Description: Do not edit
  */
 // 导出所有组件
@@ -18,6 +18,3 @@ export type { TableProps } from './components/Table'
 
 // 导出工具函数
 export * from './utils'
-
-// 导出主题相关
-export * from './theme'
