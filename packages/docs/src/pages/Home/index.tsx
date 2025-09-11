@@ -2,7 +2,7 @@
  * @Author: xuwei
  * @Date: 2025-09-11 00:19:33
  * @LastEditors: lisaxw lisaxw@qq.com
- * @LastEditTime: 2025-09-11 15:24:23
+ * @LastEditTime: 2025-09-11 16:29:40
  * @Description: Do not edit
  */
 import React from 'react'
@@ -14,6 +14,7 @@ import {
     SafetyOutlined,
     GlobalOutlined,
 } from '@ant-design/icons'
+import CodeHighlighter from '../../components/CodeHighlighter'
 
 const { Title, Paragraph } = Typography
 
@@ -90,25 +91,23 @@ const Home: React.FC = () => {
             <Card style={{ marginTop: 48 }}>
                 <Title level={3}>快速开始</Title>
                 <Paragraph>使用 npm、yarn 或 pnpm 安装组件库：</Paragraph>
-                <div className="code-block">
-                    <pre>
-                        {`npm install antd-plus
+                <CodeHighlighter
+                    code={`npm install @ant-design-plus/ui
 # 或
-yarn add antd-plus
+yarn add @ant-design-plus/ui
 # 或
-pnpm add antd-plus`}
-                    </pre>
-                </div>
+pnpm add @ant-design-plus/ui`}
+                    language="bash"
+                />
                 <Paragraph style={{ marginTop: 16 }}>在你的项目中使用：</Paragraph>
-                <div className="code-block">
-                    <pre>
-                        {`import { Button } from '@ant-design-plus/ui';
+                <CodeHighlighter
+                    code={`import { Button } from '@ant-design-plus/ui';
 
 function App() {
   return <Button type="primary">Hello World</Button>;
 }`}
-                    </pre>
-                </div>
+                    language="tsx"
+                />
             </Card>
         </div>
     )
