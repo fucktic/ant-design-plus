@@ -13,6 +13,7 @@ import Home from './pages/Home'
 import Changelog from './pages/Changelog'
 import ScrollbarDemo from './pages/components/ScrollbarDemo'
 import CodeHighlightDemo from './pages/CodeHighlightDemo'
+import FormCascaderDemo from './pages/components/FormCascaderDemo'
 
 const App: React.FC = () => {
     return (
@@ -34,6 +35,10 @@ const App: React.FC = () => {
                     <Route
                         path="/components/scrollbar"
                         element={<ScrollbarDemo />}
+                    />
+                    <Route
+                        path="/components/form-cascader"
+                        element={<FormCascaderDemo />}
                     />
                 </Routes>
             </Layout>

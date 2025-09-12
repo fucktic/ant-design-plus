@@ -66,6 +66,17 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                         </Link>
                     ),
                 },
+                {
+                    key: '/components/form-cascader',
+                    label: (
+                        <Link
+                            to="/components/form-cascader"
+                            className="text-gray-700 dark:text-gray-300 hover:text-blue-600"
+                        >
+                            FormCascader 级联选择器
+                        </Link>
+                    ),
+                },
             ],
         },
     ]

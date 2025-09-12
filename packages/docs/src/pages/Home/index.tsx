@@ -273,7 +273,7 @@ const Home: React.FC = () => {
                                     overflow: 'hidden',
                                     background: 'linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%)',
                                 }}
-                                bodyStyle={{ padding: 40 }}
+                                styles={{ body: { padding: 40 } }}
                                 onMouseEnter={(e) => {
                                     e.currentTarget.style.transform =
                                         'translateY(-12px) scale(1.02)'
@@ -325,7 +325,7 @@ const Home: React.FC = () => {
                         border: 'none',
                         boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
                     }}
-                    bodyStyle={{ padding: 40 }}
+                    styles={{ body: { padding: 40 } }}
                 >
                     <div style={{ textAlign: 'center', marginBottom: 40 }}>
                         <Title

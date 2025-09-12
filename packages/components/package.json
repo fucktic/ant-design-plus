@@ -1,6 +1,6 @@
 {
     "name": "ant-design-plus-ui",
-    "version": "1.4.1",
+    "version": "1.5.3",
     "description": "Enhanced React components based on Ant Design",
     "main": "dist/index.umd.js",
     "module": "dist/index.esm.js",
@@ -21,6 +21,7 @@
         "react-dom": ">=18.0.0"
     },
     "devDependencies": {
+        "less": "^4.4.1",
         "vite-plugin-dts": "^4.5.4"
     },
     "publishConfig": {
@@ -38,5 +39,8 @@
         "typescript"
     ],
     "author": "Your Name",
-    "license": "MIT"
+    "license": "MIT",
+    "dependencies": {
+        "styled-components": "^6.1.19"
+    }
 }
