@@ -58,6 +58,8 @@ export interface ScrollbarProps {
     className?: string
     /** 滚动事件回调 */
     onScroll?: (event: Event) => void
+    /** 滚动到底部事件回调 */
+    onScrollToBottom?: () => void
     /** 是否显示水平滚动条 */
     showHorizontal?: boolean
     /** 是否显示垂直滚动条 */
@@ -86,6 +88,8 @@ export interface ScrollbarRef {
     scrollToTop: (behavior?: ScrollBehavior) => void
     /** 滚动到左侧 */
     scrollToLeft: (behavior?: ScrollBehavior) => void
+    /** 滚动到底部 */
+    scrollToBottom: (behavior?: ScrollBehavior) => void
 }
 
 /**

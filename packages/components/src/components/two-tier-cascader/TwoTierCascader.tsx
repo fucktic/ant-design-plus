@@ -27,7 +27,7 @@ import React, {
     useImperativeHandle,
 } from 'react'
 import { CloseOutlined, RightOutlined } from '@ant-design/icons'
-import { CheckboxChangeEvent, Empty, List, Typography, theme } from 'antd'
+import { CheckboxChangeEvent, Empty, List, Spin, Typography, theme } from 'antd'
 import Scrollbar from '../Scrollbar/Scrollbar'
 
 // 导入类型定义
@@ -516,8 +516,12 @@ export const TwoTierCascader = forwardRef<TwoTierCascaderRef, TwoTierCascaderPro
                                 }}
                             >
                                 <Scrollbar
+                                    key={currentLevel1Item?.value}
                                     showHorizontal={false}
                                     style={{ height: '100%' }}
+                                    onScrollToBottom={() =>
+                                        level2HasMore && handleLoadMoreLevel2Items()
+                                    }
                                 >
                                     <List
                                         split={false}
@@ -561,13 +565,10 @@ export const TwoTierCascader = forwardRef<TwoTierCascaderRef, TwoTierCascaderPro
                                         <div
                                             style={{
                                                 textAlign: 'center',
-                                                padding: 10,
-                                                color: '#999',
+                                                padding: 24,
                                             }}
                                         >
-                                            <Link onClick={handleLoadMoreLevel2Items}>
-                                                {level2Loading ? 'Loading...' : '加载更多'}
-                                            </Link>
+                                            <Spin spinning={level2Loading}></Spin>
                                         </div>
                                     )}
                                 </Scrollbar>

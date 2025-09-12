@@ -41,6 +41,7 @@ const Scrollbar = forwardRef<ScrollbarRef, ScrollbarProps>(
             style,
             className = '',
             onScroll,
+            onScrollToBottom,
             showHorizontal = true,
             showVertical = true,
             scrollbarSize = DEFAULT_CONFIG.SCROLLBAR_SIZE,
@@ -113,8 +114,14 @@ const Scrollbar = forwardRef<ScrollbarRef, ScrollbarProps>(
             (event: Event) => {
                 handleStateScroll(event)
                 onScroll?.(event)
+
+                // 检查是否滚动到底部
+                const { scrollHeight, scrollTop, clientHeight } = event.target as HTMLElement
+                if (scrollHeight - scrollTop === clientHeight) {
+                    onScrollToBottom?.()
+                }
             },
-            [handleStateScroll, onScroll]
+            [handleStateScroll, onScroll, onScrollToBottom]
         )
 
         // 事件管理
@@ -180,6 +187,14 @@ const Scrollbar = forwardRef<ScrollbarRef, ScrollbarProps>(
                 },
                 scrollToLeft: (behavior = 'smooth') => {
                     safeScrollTo(containerRef.current, { left: 0, behavior })
+                },
+                scrollToBottom: (behavior = 'smooth') => {
+                    if (containerRef.current) {
+                        safeScrollTo(containerRef.current, {
+                            top: containerRef.current.scrollHeight,
+                            behavior,
+                        })
+                    }
                 },
             }),
             []

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { Typography, Space, Button, Divider, theme, Slider } from 'antd'
+import { Typography, Space, Button, Divider, theme, Slider, message } from 'antd'
 import { Scrollbar } from 'ant-design-plus-ui'
 import DemoContainer from '../../../components/DemoContainer'
 import CodeHighlighter from '../../../components/CodeHighlighter'
@@ -8,7 +8,9 @@ const { Title, Paragraph } = Typography
 
 const ScrollbarDemo: React.FC = () => {
     const scrollbarRef = useRef<any>(null)
+    const eventScrollbarRef = useRef<any>(null)
     const [scrollbarSize, setScrollbarSize] = useState(8)
+    const [scrollCount, setScrollCount] = useState(0)
 
     const { token } = theme.useToken()
 
@@ -22,6 +24,15 @@ const ScrollbarDemo: React.FC = () => {
 
     const handleScrollLeft = () => {
         scrollbarRef.current?.scrollLeft('smooth')
+    }
+
+    const handleScrollToBottom = () => {
+        eventScrollbarRef.current?.scrollToBottom('smooth')
+    }
+
+    const handleScrollToBottomEvent = () => {
+        setScrollCount((prev) => prev + 1)
+        message.success(`滚动到底部了！第 ${scrollCount + 1} 次`)
     }
 
     return (
@@ -357,6 +368,112 @@ export default CustomExample;`}
                     </div>
                 </DemoContainer>
 
+                <DemoContainer
+                    title="滚动到底部事件"
+                    description="演示 onScrollToBottom 事件和 scrollToBottom 方法的使用。"
+                    code={`import React, { useRef, useState } from 'react';
+import { Button, Space, message } from 'antd';
+import { Scrollbar } from 'ant-design-plus-ui';
+
+const ScrollToBottomExample = () => {
+  const scrollbarRef = useRef(null);
+  const [scrollCount, setScrollCount] = useState(0);
+
+  const handleScrollToBottom = () => {
+    scrollbarRef.current?.scrollToBottom('smooth');
+  };
+
+  const handleScrollToBottomEvent = () => {
+    setScrollCount(prev => prev + 1);
+    message.success(\`滚动到底部了！第 \${scrollCount + 1} 次\`);
+  };
+
+  return (
+    <div>
+      <Space style={{ marginBottom: 16 }}>
+        <Button onClick={handleScrollToBottom}>滚动到底部</Button>
+        <span>滚动到底部次数: {scrollCount}</span>
+      </Space>
+      
+      <Scrollbar 
+        ref={scrollbarRef}
+        style={{ height: 200, width: 400 }}
+        onScrollToBottom={handleScrollToBottomEvent}
+      >
+        <div style={{ 
+          height: 800, 
+          padding: 20,
+          background: 'linear-gradient(180deg, #ffecd2 0%, #fcb69f 100%)',
+        }}>
+          <h3>滚动到底部事件演示</h3>
+           <p>当滚动条滚动到底部时，会触发 onScrollToBottom 事件。</p>
+           <p>你可以手动滚动到底部，或者点击按钮滚动到底部。</p>
+           <p>每次到达底部都会显示消息提示。</p>
+          {Array.from({ length: 20 }, (_, i) => (
+            <p key={i}>这是第 {i + 1} 行内容，继续滚动到底部...</p>
+          ))}
+          <div style={{
+            padding: 20,
+            background: 'rgba(255, 255, 255, 0.8)',
+            borderRadius: 8,
+            textAlign: 'center',
+            fontWeight: 'bold'
+          }}>
+            🎉 恭喜！你已经滚动到底部了！
+          </div>
+        </div>
+      </Scrollbar>
+    </div>
+  );
+};
+
+export default ScrollToBottomExample;`}
+                >
+                    <div>
+                        <Space style={{ marginBottom: 16 }}>
+                            <Button onClick={handleScrollToBottom}>滚动到底部</Button>
+                            <span>滚动到底部次数: {scrollCount}</span>
+                        </Space>
+
+                        <Scrollbar
+                            ref={eventScrollbarRef}
+                            style={{
+                                height: 200,
+                                width: 400,
+                                border: `1px solid ${token.colorBorder}`,
+                            }}
+                            onScrollToBottom={handleScrollToBottomEvent}
+                        >
+                            <div
+                                style={{
+                                    height: 800,
+                                    padding: 20,
+                                    background: 'linear-gradient(180deg, #ffecd2 0%, #fcb69f 100%)',
+                                }}
+                            >
+                                <h3>滚动到底部事件演示</h3>
+                                <p>当滚动条滚动到底部时，会触发 onScrollToBottom 事件。</p>
+                                <p>你可以手动滚动到底部，或者点击按钮滚动到底部。</p>
+                                <p>每次到达底部都会显示消息提示。</p>
+                                {Array.from({ length: 20 }, (_, i) => (
+                                    <p key={i}>这是第 {i + 1} 行内容，继续滚动到底部...</p>
+                                ))}
+                                <div
+                                    style={{
+                                        padding: 20,
+                                        background: 'rgba(255, 255, 255, 0.8)',
+                                        borderRadius: 8,
+                                        textAlign: 'center',
+                                        fontWeight: 'bold',
+                                    }}
+                                >
+                                    🎉 恭喜！你已经滚动到底部了！
+                                </div>
+                            </div>
+                        </Scrollbar>
+                    </div>
+                </DemoContainer>
+
                 <Divider />
 
                 <Title level={2}>API</Title>
@@ -368,12 +485,15 @@ export default CustomExample;`}
   style?: CSSProperties;                  // 容器样式
   className?: string;                     // 容器类名
   onScroll?: (event: Event) => void;      // 滚动事件回调
+  onScrollToBottom?: () => void;          // 滚动到底部事件回调
   showHorizontal?: boolean;               // 是否显示水平滚动条，默认 true
   showVertical?: boolean;                 // 是否显示垂直滚动条，默认 true
   scrollbarSize?: number;                 // 滚动条宽度，默认 8
   scrollbarColor?: string;                // 滚动条颜色，默认 rgba(0, 0, 0, 0.45)
   trackColor?: string;                    // 滚动条轨道颜色，默认 rgba(0, 0, 0, 0.06)
   prefixCls?: string;                     // 组件类名前缀，默认 adp-scrollbar
+  autoHide?: boolean;                     // 是否自动隐藏滚动条，默认 true
+  hideDelay?: number;                     // 滚动条隐藏延迟（毫秒），默认 1000
 }
 
 interface ScrollbarRef {
@@ -382,9 +502,9 @@ interface ScrollbarRef {
     top?: number; 
     behavior?: ScrollBehavior 
   }) => void;
-  scrollTop: (behavior?: ScrollBehavior) => void;     // 滚动到顶部
-  scrollLeft: (behavior?: ScrollBehavior) => void;    // 滚动到左侧
-  getScrollElement: () => HTMLDivElement | null;      // 获取滚动容器元素
+  scrollToTop: (behavior?: ScrollBehavior) => void;   // 滚动到顶部
+  scrollToLeft: (behavior?: ScrollBehavior) => void;  // 滚动到左侧
+  scrollToBottom: (behavior?: ScrollBehavior) => void; // 滚动到底部
 }`}
                     language="typescript"
                     showCopyButton={true}
