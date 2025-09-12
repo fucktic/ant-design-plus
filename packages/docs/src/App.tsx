@@ -11,10 +11,7 @@ import { ThemeProvider } from './contexts/ThemeContext'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import Changelog from './pages/Changelog'
-import ButtonDemo from './pages/components/ButtonDemo'
-import CardDemo from './pages/components/CardDemo'
-import TableDemo from './pages/components/TableDemo'
-import FormDemo from './pages/components/FormDemo'
+import ScrollbarDemo from './pages/components/ScrollbarDemo'
 import CodeHighlightDemo from './pages/CodeHighlightDemo'
 
 const App: React.FC = () => {
@@ -35,20 +32,8 @@ const App: React.FC = () => {
                         element={<CodeHighlightDemo />}
                     />
                     <Route
-                        path="/components/button"
-                        element={<ButtonDemo />}
-                    />
-                    <Route
-                        path="/components/card"
-                        element={<CardDemo />}
-                    />
-                    <Route
-                        path="/components/table"
-                        element={<TableDemo />}
-                    />
-                    <Route
-                        path="/components/form"
-                        element={<FormDemo />}
+                        path="/components/scrollbar"
+                        element={<ScrollbarDemo />}
                     />
                 </Routes>
             </Layout>

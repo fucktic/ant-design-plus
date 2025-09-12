@@ -33,18 +33,63 @@ const Changelog: React.FC = () => {
                             children: (
                                 <div>
                                     <div className="flex items-center gap-2 mb-2">
-                                        <Text strong>v1.0.0</Text>
+                                        <Text strong>v1.3.3</Text>
                                         <Tag color="blue">Latest</Tag>
+                                        <Text type="secondary">2025-09-12</Text>
+                                    </div>
+                                    <div className="mb-3">
+                                        <Text strong>🚀 Scrollbar 组件重大优化</Text>
+                                    </div>
+                                    <ul className="list-disc list-inside space-y-1 text-sm">
+                                        <li>
+                                            🎨 <Text strong>滑块颜色优化</Text>：使用 opacity 控制
+                                            hover 效果，避免默认色覆盖
+                                        </li>
+                                        <li>
+                                            🎯 <Text strong>视觉体验提升</Text>：轨道比滑块宽/高
+                                            2px，滑块居中显示
+                                        </li>
+                                        <li>
+                                            🏗️ <Text strong>架构重构</Text>：模块化设计，提取自定义
+                                            hooks
+                                        </li>
+                                        <li>
+                                            ⚡ <Text strong>性能优化</Text>：使用
+                                            useMemo、useCallback 减少重渲染
+                                        </li>
+                                        <li>
+                                            🔧 <Text strong>代码质量</Text>：统一常量管理，完善
+                                            TypeScript 类型
+                                        </li>
+                                        <li>
+                                            📱 <Text strong>响应式适配</Text>
+                                            ：移动端自动使用更小滚动条
+                                        </li>
+                                        <li>
+                                            ♿ <Text strong>无障碍支持</Text>
+                                            ：高对比度和减少动画偏好
+                                        </li>
+                                        <li>
+                                            📚 <Text strong>完整文档</Text>：新增详细的 README
+                                            和使用说明
+                                        </li>
+                                    </ul>
+                                </div>
+                            ),
+                        },
+                        {
+                            children: (
+                                <div>
+                                    <div className="flex items-center gap-2 mb-2">
+                                        <Text strong>v1.0.0</Text>
+                                        <Tag color="green">Stable</Tag>
                                         <Text type="secondary">2025-09-11</Text>
                                     </div>
                                     <div className="mb-3">
                                         <Text strong>🎉 首次发布</Text>
                                     </div>
                                     <ul className="list-disc list-inside space-y-1 text-sm">
-                                        <li>✨ 新增 Button 按钮组件，支持多种类型和状态</li>
-                                        <li>✨ 新增 Card 卡片组件，支持阴影和悬停效果</li>
-                                        <li>✨ 新增 Table 表格组件，支持斑马纹和紧凑模式</li>
-                                        <li>✨ 新增 Form 表单组件，支持紧凑布局</li>
+                                        <li>✨ 新增 Scrollbar 滚动条组件，支持自定义样式</li>
                                         <li>🔧 基于 Vite 7.1.5 构建系统</li>
                                         <li>🔧 支持 React 19 和 TypeScript</li>
                                         <li>🔧 集成 Ant Design 5.27.3</li>

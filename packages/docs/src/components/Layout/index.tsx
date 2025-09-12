@@ -51,65 +51,18 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             type: 'divider' as const,
         },
         {
-            key: 'general',
-            label: <div>通用</div>,
+            key: 'components',
+            label: <div>组件</div>,
             type: 'group' as const,
             children: [
                 {
-                    key: '/components/button',
+                    key: '/components/scrollbar',
                     label: (
                         <Link
-                            to="/components/button"
+                            to="/components/scrollbar"
                             className="text-gray-700 dark:text-gray-300 hover:text-blue-600"
                         >
-                            Button 按钮
-                        </Link>
-                    ),
-                },
-            ],
-        },
-        {
-            key: 'data-display',
-            label: <div>数据展示</div>,
-            type: 'group' as const,
-            children: [
-                {
-                    key: '/components/card',
-                    label: (
-                        <Link
-                            to="/components/card"
-                            className="text-gray-700 dark:text-gray-300 hover:text-blue-600"
-                        >
-                            Card 卡片
-                        </Link>
-                    ),
-                },
-                {
-                    key: '/components/table',
-                    label: (
-                        <Link
-                            to="/components/table"
-                            className="text-gray-700 dark:text-gray-300 hover:text-blue-600"
-                        >
-                            Table 表格
-                        </Link>
-                    ),
-                },
-            ],
-        },
-        {
-            key: 'data-entry',
-            label: <div>数据录入</div>,
-            type: 'group' as const,
-            children: [
-                {
-                    key: '/components/form',
-                    label: (
-                        <Link
-                            to="/components/form"
-                            className="text-gray-700 dark:text-gray-300 hover:text-blue-600"
-                        >
-                            Form 表单
+                            Scrollbar 滚动条
                         </Link>
                     ),
                 },
@@ -122,7 +75,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             theme="light"
             mode="inline"
             selectedKeys={[location.pathname]}
-            defaultOpenKeys={['general', 'data-display', 'data-entry']}
+            defaultOpenKeys={['components']}
             items={menuItems}
             style={{
                 border: 'none',

@@ -6,14 +6,9 @@
  * @Description: Do not edit
  */
 // 导出所有组件
-export { default as Button } from './components/Button'
-export { default as Card } from './components/Card'
-export { default as Table } from './components/Table'
-export { default as Form } from './components/Form'
+export { default as Scrollbar } from './components/Scrollbar'
 
 // 导出组件类型
-export type { ButtonProps } from './components/Button'
-export type { CardProps } from './components/Card'
-export type { TableProps } from './components/Table'
+export type { ScrollbarProps, ScrollbarRef } from './components/Scrollbar'
 
 // 导出工具函数
