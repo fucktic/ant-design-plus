@@ -9,6 +9,6 @@
 export { default as Scrollbar } from './components/Scrollbar'
 
 // 导出组件类型
-export type { ScrollbarProps, ScrollbarRef } from './components/Scrollbar'
+export type { ScrollbarProps, ScrollbarRef } from './components/Scrollbar/types'
 
 // 导出工具函数

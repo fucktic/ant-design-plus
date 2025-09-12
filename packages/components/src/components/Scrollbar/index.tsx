@@ -298,7 +298,4 @@ const Scrollbar = forwardRef<ScrollbarRef, ScrollbarProps>(
 
 Scrollbar.displayName = 'Scrollbar'
 
-// 导出类型
-export type { ScrollbarProps, ScrollbarRef }
-
 export default Scrollbar

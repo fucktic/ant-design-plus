@@ -1,41 +1,36 @@
 # @ant-design-plus/components
 
-基于 Ant Design 的 React 组件库，提供更多实用的业务组件。
+高性能的 React 滚动条组件库，提供企业级的自定义滚动条解决方案。
 
-## 安装
+## ✨ 特性
+
+- 🎨 **完全自定义** - 支持自定义颜色、尺寸、样式
+- ⚡ **高性能** - 使用 React.memo、useMemo 等优化技术
+- 🔧 **TypeScript** - 完整的 TypeScript 类型支持
+- 📱 **响应式** - 自适应容器尺寸变化
+- 🎯 **易用性** - 简洁的 API 设计
+- 🔄 **实时更新** - 内容变化时自动更新滚动条
+
+## 📦 安装
 
 ```bash
-npm install @ant-design-plus/components
+npm install ant-design-plus-ui
 # 或
-yarn add @ant-design-plus/components
+yarn add ant-design-plus-ui
 # 或
-pnpm add @ant-design-plus/components
+pnpm add ant-design-plus-ui
 ```
 
-## 使用
+## 📝 更新日志
 
-```tsx
-import { Button, Card, Table, Form } from '@ant-design-plus/components'
+### v1.4.0 (2024-09-12)
 
-function App() {
-    return (
-        <div>
-            <Button type="primary">Hello World</Button>
-            <Card title="示例卡片">
-                <p>卡片内容</p>
-            </Card>
-        </div>
-    )
-}
-```
+- ✨ 新增 Scrollbar 滚动条组件
+- 🎨 支持透明度控制的颜色系统
+- 🔧 轨道居中对齐，滑块完美居中
+- ⚡ 企业级性能优化
+- 📝 完整的 TypeScript 类型支持
 
-## 组件列表
-
--   **Button** - 增强按钮组件
--   **Card** - 增强卡片组件
--   **Table** - 增强表格组件
--   **Form** - 增强表单组件
-
-## 许可证
+## 📄 许可证
 
 MIT
