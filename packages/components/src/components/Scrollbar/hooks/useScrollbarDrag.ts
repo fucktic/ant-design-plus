@@ -17,16 +17,6 @@ export const useScrollbarDrag = () => {
     })
 
     /**
-     * 清理拖拽事件监听器
-     */
-    const cleanupDragListeners = useCallback(() => {
-        document.removeEventListener('mousemove', handleMouseMove)
-        document.removeEventListener('mouseup', handleMouseUp)
-        document.removeEventListener('selectstart', preventSelection)
-        dragStateRef.current.isDragging = false
-    }, [])
-
-    /**
      * 阻止文本选择
      */
     const preventSelection = useCallback((e: Event) => {
@@ -45,8 +35,21 @@ export const useScrollbarDrag = () => {
      * 鼠标释放处理器
      */
     const handleMouseUp = useCallback(() => {
-        cleanupDragListeners()
-    }, [cleanupDragListeners])
+        document.removeEventListener('mousemove', handleMouseMove)
+        document.removeEventListener('mouseup', handleMouseUp)
+        document.removeEventListener('selectstart', preventSelection)
+        dragStateRef.current.isDragging = false
+    }, [handleMouseMove, preventSelection])
+
+    /**
+     * 清理拖拽事件监听器
+     */
+    const cleanupDragListeners = useCallback(() => {
+        document.removeEventListener('mousemove', handleMouseMove)
+        document.removeEventListener('mouseup', handleMouseUp)
+        document.removeEventListener('selectstart', preventSelection)
+        dragStateRef.current.isDragging = false
+    }, [handleMouseMove, handleMouseUp, preventSelection])
 
     /**
      * 处理垂直滚动条拖拽

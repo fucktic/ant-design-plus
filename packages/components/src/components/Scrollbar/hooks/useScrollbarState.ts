@@ -82,18 +82,18 @@ export const useScrollbarState = (options: UseScrollbarStateOptions = {}) => {
     /**
      * 节流的更新函数
      */
-    const throttledUpdate = useCallback(throttle(updateScrollbarState, scrollThrottle), [
-        updateScrollbarState,
-        scrollThrottle,
-    ])
+    const throttledUpdate = useCallback(() => {
+        const throttledFn = throttle(updateScrollbarState, scrollThrottle)
+        throttledFn()
+    }, [updateScrollbarState, scrollThrottle])
 
     /**
      * 防抖的更新函数（用于窗口大小变化）
      */
-    const debouncedUpdate = useCallback(debounce(updateScrollbarState, resizeDebounce), [
-        updateScrollbarState,
-        resizeDebounce,
-    ])
+    const debouncedUpdate = useCallback(() => {
+        const debouncedFn = debounce(updateScrollbarState, resizeDebounce)
+        debouncedFn()
+    }, [updateScrollbarState, resizeDebounce])
 
     /**
      * 设置更新回调函数

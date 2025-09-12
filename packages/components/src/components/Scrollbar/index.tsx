@@ -8,9 +8,6 @@ import React, {
 } from 'react'
 import { theme } from 'antd'
 import { ScrollbarProps, ScrollbarRef } from './types'
-
-// 导出类型
-export type { ScrollbarProps, ScrollbarRef }
 import { DEFAULT_CONFIG } from './constants'
 import { validateScrollbarConfig, getScrollbarClassNames, safeScrollTo } from './utils'
 import { useScrollbarCalculation } from './hooks/useScrollbarCalculation'
@@ -300,5 +297,8 @@ const Scrollbar = forwardRef<ScrollbarRef, ScrollbarProps>(
 )
 
 Scrollbar.displayName = 'Scrollbar'
+
+// 导出类型
+export type { ScrollbarProps, ScrollbarRef }
 
 export default Scrollbar

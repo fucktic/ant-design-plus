@@ -39,11 +39,14 @@ export const useScrollbarEvents = (options: UseScrollbarEventsOptions) => {
      * 节流的滚动处理函数
      */
     const throttledScrollHandler = useCallback(
-        throttle((event: Event) => {
-            if (enabled && onScroll) {
-                onScroll(event)
-            }
-        }, scrollThrottle),
+        (event: Event) => {
+            const throttledFn = throttle((e: Event) => {
+                if (enabled && onScroll) {
+                    onScroll(e)
+                }
+            }, scrollThrottle)
+            throttledFn(event)
+        },
         [onScroll, enabled, scrollThrottle]
     )
 

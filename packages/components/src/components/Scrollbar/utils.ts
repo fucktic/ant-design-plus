@@ -155,7 +155,7 @@ export function safeScrollTo(
             top: isValidNumber(options.top) ? options.top : element.scrollTop,
             behavior: options.behavior || 'auto',
         })
-    } catch (error) {
+    } catch {
         // 降级处理
         if (isValidNumber(options.left)) {
             element.scrollLeft = options.left
