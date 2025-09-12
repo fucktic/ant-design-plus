@@ -16,12 +16,12 @@
 
 ## 特性
 
--   🚀 基于 React 19 和 TypeScript
--   🎨 基于 Ant Design 设计语言
--   📦 开箱即用的高质量组件
--   🛠️ 完整的 TypeScript 支持
--   📖 详细的文档和示例
--   🌍 支持国际化
+- 🚀 基于 React 19 和 TypeScript
+- 🎨 基于 Ant Design 设计语言
+- 📦 开箱即用的高质量组件
+- 🛠️ 完整的 TypeScript 支持
+- 📖 详细的文档和示例
+- 🌍 支持国际化
 
 ## 安装
 

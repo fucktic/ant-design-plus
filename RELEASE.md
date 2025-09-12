@@ -9,14 +9,14 @@
 
 ## 技术栈
 
--   **构建工具**: Vite 7.1.5
--   **前端框架**: React 19.1.1
--   **UI 框架**: Ant Design 5.27.3
--   **样式方案**: styled-components 6.1.19 (CSS-in-JS，样式文件分离)
--   **路由**: React Router 7.8.2
--   **包管理**: pnpm workspaces
--   **类型检查**: TypeScript 5.7.3
--   **代码质量**: ESLint 9.35.0
+- **构建工具**: Vite 7.1.5
+- **前端框架**: React 19.1.1
+- **UI 框架**: Ant Design 5.27.3
+- **样式方案**: styled-components 6.1.19 (CSS-in-JS，样式文件分离)
+- **路由**: React Router 7.8.2
+- **包管理**: pnpm workspaces
+- **类型检查**: TypeScript 5.7.3
+- **代码质量**: ESLint 9.35.0
 
 ## 快速开始
 
@@ -108,8 +108,8 @@ git push -u origin main
 
 ### 3. 自动部署
 
--   推送到 `main` 分支会自动触发文档站点部署
--   创建 tag 会自动触发 NPM 发布
+- 推送到 `main` 分支会自动触发文档站点部署
+- 创建 tag 会自动触发 NPM 发布
 
 ## 项目结构
 
@@ -137,29 +137,29 @@ ant-design-plus/
 
 ### Button 组件
 
--   渐变背景效果
--   自定义圆角
--   悬停动画效果
--   波纹点击效果
+- 渐变背景效果
+- 自定义圆角
+- 悬停动画效果
+- 波纹点击效果
 
 ### Card 组件
 
--   多种阴影级别
--   渐变边框
--   悬停提升效果
--   自定义圆角
+- 多种阴影级别
+- 渐变边框
+- 悬停提升效果
+- 自定义圆角
 
 ### Table 组件
 
--   斑马纹样式
--   紧凑模式
--   悬停高亮
--   渐变表头
+- 斑马纹样式
+- 紧凑模式
+- 悬停高亮
+- 渐变表头
 
 ### Form 组件
 
--   继承 Ant Design Form 所有功能
--   自定义样式增强
+- 继承 Ant Design Form 所有功能
+- 自定义样式增强
 
 ## 主题系统
 
@@ -195,18 +195,18 @@ const customTheme = {
 
 ### 构建错误
 
--   确保使用 Node.js 18+ 和 pnpm 8+
--   清理依赖：`pnpm clean && pnpm install`
+- 确保使用 Node.js 18+ 和 pnpm 8+
+- 清理依赖：`pnpm clean && pnpm install`
 
 ### 类型错误
 
--   运行类型检查：`pnpm type-check`
--   更新类型定义：`pnpm add -D @types/react@latest @types/react-dom@latest`
+- 运行类型检查：`pnpm type-check`
+- 更新类型定义：`pnpm add -D @types/react@latest @types/react-dom@latest`
 
 ### 样式问题
 
--   确保 styled-components 版本兼容
--   检查主题配置是否正确
+- 确保 styled-components 版本兼容
+- 检查主题配置是否正确
 
 ## 贡献指南
 

@@ -6,8 +6,8 @@
 
 确保您的开发环境满足以下要求：
 
--   Node.js >= 18.0.0
--   pnpm >= 8.0.0
+- Node.js >= 18.0.0
+- pnpm >= 8.0.0
 
 ## 开始开发
 
@@ -61,9 +61,9 @@ ant-design-plus/
 
 ### 代码风格
 
--   使用 TypeScript
--   遵循 ESLint 规则
--   使用 Prettier 格式化代码
+- 使用 TypeScript
+- 遵循 ESLint 规则
+- 使用 Prettier 格式化代码
 
 ### 组件开发
 
@@ -78,13 +78,13 @@ ant-design-plus/
 
 使用 [Conventional Commits](https://www.conventionalcommits.org/) 规范：
 
--   `feat:` 新功能
--   `fix:` 修复 bug
--   `docs:` 文档更新
--   `style:` 代码格式调整
--   `refactor:` 代码重构
--   `test:` 测试相关
--   `chore:` 构建过程或辅助工具的变动
+- `feat:` 新功能
+- `fix:` 修复 bug
+- `docs:` 文档更新
+- `style:` 代码格式调整
+- `refactor:` 代码重构
+- `test:` 测试相关
+- `chore:` 构建过程或辅助工具的变动
 
 ### 发布流程
 
