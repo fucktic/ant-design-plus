@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { Typography, Space, Button, Divider, theme, message } from 'antd'
-import { FormCascader } from 'ant-design-plus-ui'
-import type { CascaderOption, FormCascaderRef } from 'ant-design-plus-ui'
+import { TwoTierCascader } from 'ant-design-plus-ui'
+import type { CascaderOption, TwoTierCascaderRef } from 'ant-design-plus-ui'
 import DemoContainer from '../../../components/DemoContainer'
 import CodeHighlighter from '../../../components/CodeHighlighter'
 
@@ -50,7 +50,7 @@ function mockLevel2(
 }
 
 const BasicCode = `import React, { useRef, useState } from 'react';
-import { FormCascader } from 'ant-design-plus-ui';
+import { TwoTierCascader } from 'ant-design-plus-ui';
 
 function mockLevel1() { /* 加载授权账户数据 */ }
 function mockLevel2(parent, page, pageSize) { /* 加载推广账户数据 */ }
@@ -60,7 +60,7 @@ export default () => {
   const [value, setValue] = useState([]);
 
   return (
-    <FormCascader
+    <TwoTierCascader
       ref={ref}
       onChange={setValue}
       onLoadLevel1Data={mockLevel1}
@@ -76,12 +76,9 @@ export default () => {
   );
 };`
 
-const ActionsCode = `// 编程式添加
-ref.current?.addSelecteds([{ label: '外部添加', value: 'ext-1' }])`
-
 export default function FormCascaderDemo() {
     const { token } = theme.useToken()
-    const ref = useRef<FormCascaderRef>(null)
+    const ref = useRef<TwoTierCascaderRef>(null)
     const [value, setValue] = useState<CascaderOption[]>([])
 
     return (
@@ -102,13 +99,13 @@ export default function FormCascaderDemo() {
                     className="mb-2"
                     style={{ margin: '0 0 8px 0' }}
                 >
-                    FormCascader 级联选择器
+                    TwoTierCascader 二层级联选择器
                 </Title>
                 <Paragraph
                     className="mb-0"
                     style={{ margin: 0 }}
                 >
-                    三栏式级联选择器：左侧授权账户，中间推广账户，右侧已选项。支持最大选择数、分页加载与编程式操作。
+                    二层级联选择器：左侧授权账户，中间推广账户，右侧已选项。支持最大选择数、分页加载与编程式操作。
                 </Paragraph>
             </div>
 
@@ -133,7 +130,7 @@ export default function FormCascaderDemo() {
                     </Space>
 
                     <div style={{ height: 400 }}>
-                        <FormCascader
+                        <TwoTierCascader
                             ref={ref}
                             onChange={setValue}
                             onLoadLevel1Data={mockLevel1}
@@ -147,31 +144,6 @@ export default function FormCascaderDemo() {
                             }}
                         />
                     </div>
-
-                    <div style={{ marginTop: 12 }}>
-                        <Paragraph style={{ marginBottom: 4 }}>当前选中：</Paragraph>
-                        <Paragraph style={{ whiteSpace: 'pre-wrap' }}>
-                            {value.length ? value.map((i) => i.label).join('，') : '（空）'}
-                        </Paragraph>
-                    </div>
-                </DemoContainer>
-
-                <DemoContainer
-                    title="编程式操作"
-                    description="通过组件 ref 提供的 addSelecteds 方法，外部可添加已选项。"
-                    code={ActionsCode}
-                >
-                    <Paragraph>点击外部添加一项按钮可直接将一项加入已选列表。</Paragraph>
-                    <Space>
-                        <Button
-                            type="primary"
-                            onClick={() =>
-                                ref.current?.addSelecteds([{ label: '外部添加', value: 'ext-1' }])
-                            }
-                        >
-                            外部添加一项
-                        </Button>
-                    </Space>
                 </DemoContainer>
 
                 <Divider />
@@ -179,7 +151,7 @@ export default function FormCascaderDemo() {
                 <Title level={2}>API</Title>
                 <Paragraph>核心属性说明：</Paragraph>
                 <CodeHighlighter
-                    code={`interface FormCascaderProps {
+                    code={`interface TwoTierCascaderProps {
   onLoadLevel1Data: () => Promise<{ data: CascaderOption[] }>;
   onLoadLevel2Data: (parent: string | number, page: number, pageSize: number) => Promise<{ data: CascaderOption[]; total: number }>;
   onChange?: (selected: CascaderOption[]) => void;
@@ -193,7 +165,7 @@ export default function FormCascaderDemo() {
   height?: number;                // 列表高度
 }
 
-interface FormCascaderRef {
+interface TwoTierCascaderRef {
   addSelecteds: (items: CascaderOption[]) => void;
 }
 

@@ -1,5 +1,5 @@
 /**
- * FormCascader 相关类型定义
+ * TwoTierCascader 相关类型定义
  * @author xuwei
  * @date 2025-01-17
  */
@@ -39,9 +39,9 @@ export interface Level2DataResponse {
 }
 
 /**
- * FormCascader 组件属性接口
+ * TwoTierCascader 组件属性接口
  */
-export interface FormCascaderProps {
+export interface TwoTierCascaderProps {
     /** 选中项变化回调函数 */
     onChange?: (selectedItems: CascaderOption[]) => void
     /** 获取一级数据的方法 */
@@ -68,8 +68,8 @@ export interface FormCascaderProps {
 }
 
 /**
- * FormCascader 组件引用类型
+ * TwoTierCascader 组件引用类型
  */
-export interface FormCascaderRef {
+export interface TwoTierCascaderRef {
     addSelecteds: (itemsToAdd: CascaderOption[]) => void
 }

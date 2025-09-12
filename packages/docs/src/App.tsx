@@ -2,7 +2,7 @@
  * @Author: xuwei
  * @Date: 2025-09-11 00:19:16
  * @LastEditors: lisaxw lisaxw@qq.com
- * @LastEditTime: 2025-09-11 13:46:29
+ * @LastEditTime: 2025-09-12 16:55:39
  * @Description: Do not edit
  */
 import React from 'react'
@@ -13,7 +13,7 @@ import Home from './pages/Home'
 import Changelog from './pages/Changelog'
 import ScrollbarDemo from './pages/components/ScrollbarDemo'
 import CodeHighlightDemo from './pages/CodeHighlightDemo'
-import FormCascaderDemo from './pages/components/FormCascaderDemo'
+import TwoTierCascaderDemo from './pages/components/TwoTierCascaderDemo'
 
 const App: React.FC = () => {
     return (
@@ -33,12 +33,12 @@ const App: React.FC = () => {
                         element={<CodeHighlightDemo />}
                     />
                     <Route
-                        path="/components/scrollbar"
+                        path="/other/scrollbar"
                         element={<ScrollbarDemo />}
                     />
                     <Route
-                        path="/components/form-cascader"
-                        element={<FormCascaderDemo />}
+                        path="/form/two-tier-cascader"
+                        element={<TwoTierCascaderDemo />}
                     />
                 </Routes>
             </Layout>

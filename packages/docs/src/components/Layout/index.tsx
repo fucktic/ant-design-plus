@@ -51,29 +51,36 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             type: 'divider' as const,
         },
         {
-            key: 'components',
-            label: <div>组件</div>,
+            key: 'form',
+            label: <div>表单</div>,
             type: 'group' as const,
             children: [
                 {
-                    key: '/components/scrollbar',
+                    key: '/form/two-tier-cascader',
                     label: (
                         <Link
-                            to="/components/scrollbar"
-                            className="text-gray-700 dark:text-gray-300 hover:text-blue-600"
-                        >
-                            Scrollbar 滚动条
-                        </Link>
-                    ),
-                },
-                {
-                    key: '/components/form-cascader',
-                    label: (
-                        <Link
-                            to="/components/form-cascader"
+                            to="/form/two-tier-cascader"
                             className="text-gray-700 dark:text-gray-300 hover:text-blue-600"
                         >
                             FormCascader 级联选择器
+                        </Link>
+                    ),
+                },
+            ],
+        },
+        {
+            key: 'other',
+            label: <div>其它</div>,
+            type: 'group' as const,
+            children: [
+                {
+                    key: '/other/scrollbar',
+                    label: (
+                        <Link
+                            to="/other/scrollbar"
+                            className="text-gray-700 dark:text-gray-300 hover:text-blue-600"
+                        >
+                            Scrollbar 滚动条
                         </Link>
                     ),
                 },

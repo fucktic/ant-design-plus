@@ -1,7 +1,7 @@
 /**
- * FormCascader - 三栏式级联选择器组件
+ * TwoTierCascader - 三栏式级联选择器组件
  * 
- * @description 一个功能完整的级联选择器组件，支持两级选项选择
+ * @description 一个功能完整的二层级联选择器组件，支持两级选项选择
  * @author xuwei
  * @date 2025-01-17
  * 
@@ -33,8 +33,8 @@ import Scrollbar from '../Scrollbar/Scrollbar'
 // 导入类型定义
 import type {
     CascaderOption,
-    FormCascaderProps,
-    FormCascaderRef,
+    TwoTierCascaderProps,
+    TwoTierCascaderRef,
     Level2DataResponse,
 } from './types'
 
@@ -46,7 +46,7 @@ import { CascaderListItem } from './CascaderListItem'
 import { CascaderCheckbox } from './CascaderCheckbox'
 
 // 导入样式
-import { StyledFormCascader, StyledHeader, StyledBody, StyledSelectedItem } from './styles'
+import { StyledTwoTierCascader, StyledHeader, StyledBody, StyledSelectedItem } from './styles'
 
 const { Link, Paragraph } = Typography
 
@@ -64,7 +64,7 @@ const { Link, Paragraph } = Typography
  * - 支持虚拟滚动（InfiniteScroll）
  * - 支持异步数据加载和分页
  */
-export const FormCascader = forwardRef<FormCascaderRef, FormCascaderProps>(
+export const TwoTierCascader = forwardRef<TwoTierCascaderRef, TwoTierCascaderProps>(
     (
         {
             onChange,
@@ -411,7 +411,7 @@ export const FormCascader = forwardRef<FormCascaderRef, FormCascaderProps>(
         )
 
         return (
-            <StyledFormCascader
+            <StyledTwoTierCascader
                 $token={token}
                 className={className}
             >
@@ -642,9 +642,9 @@ export const FormCascader = forwardRef<FormCascaderRef, FormCascaderProps>(
                         </Scrollbar>
                     </div>
                 </StyledBody>
-            </StyledFormCascader>
+            </StyledTwoTierCascader>
         )
     }
 )
 
-export default FormCascader
+export default TwoTierCascader

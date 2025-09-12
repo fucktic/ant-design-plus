@@ -10,17 +10,17 @@
 export { default as Scrollbar } from './components/Scrollbar/Scrollbar'
 export type { ScrollbarProps, ScrollbarRef } from './components/Scrollbar/types'
 
-// FormCascader
-export { default as FormCascader } from './components/form-cascader'
+// TwoTierCascader
+export { default as TwoTierCascader } from './components/two-tier-cascader'
 export {
-    FormCascader as _FormCascader, // 具名导出，便于树摇与类型推导
+    TwoTierCascader as _TwoTierCascader, // 具名导出，便于树摇与类型推导
     CascaderListItem,
     CascaderCheckbox,
-} from './components/form-cascader'
+} from './components/two-tier-cascader'
 export type {
     CascaderOption,
-    FormCascaderProps,
-    FormCascaderRef,
+    TwoTierCascaderProps,
+    TwoTierCascaderRef,
     Level1DataResponse,
     Level2DataResponse,
-} from './components/form-cascader/types'
+} from './components/two-tier-cascader/types'

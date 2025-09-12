@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 import { GlobalToken } from 'antd/es/theme/interface'
 import { CSSProperties } from 'react'
 
-export const DEFAULT_PREFIX = 'adp-form-cascader'
+export const DEFAULT_PREFIX = 'adp-two-tier-cascader'
 
 // 定义颜色常量
 const COLORS = {
@@ -16,14 +16,14 @@ const COLORS = {
     disabledBg: 'rgba(0, 0, 0, 0.04)',
 }
 
-interface StyledFormCascaderProps {
+interface StyledTwoTierCascaderProps {
     $token: GlobalToken
 }
 
 /**
- * FormCascader 主容器
+ * TwoTierCascader 主容器
  */
-export const StyledFormCascader = styled.div<StyledFormCascaderProps>`
+export const StyledTwoTierCascader = styled.div<StyledTwoTierCascaderProps>`
     width: 100%;
     height: 100%;
     background-color: #ffffff;
