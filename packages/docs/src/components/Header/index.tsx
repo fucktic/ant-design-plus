@@ -7,18 +7,23 @@
  */
 import React from 'react'
 import { Layout, Button, theme } from 'antd'
-import { GithubOutlined } from '@ant-design/icons'
+import { GithubOutlined, MenuOutlined } from '@ant-design/icons'
 import { useTheme } from '../../contexts/ThemeContext'
 
 const { Header: AntHeader } = Layout
 
-const Header: React.FC = () => {
+interface HeaderProps {
+    onMenuClick?: () => void
+    showMenuButton?: boolean
+}
+
+const Header: React.FC<HeaderProps> = ({ onMenuClick, showMenuButton = false }) => {
     const {} = useTheme()
     const { token } = theme.useToken()
 
     return (
         <AntHeader
-            className="shadow-sm px-4 lg:px-8"
+            className="shadow-sm !px-4 lg:!px-8"
             style={{
                 backgroundColor: token.colorBgContainer,
                 borderBottom: `1px solid ${token.colorBorder}`,
@@ -26,9 +31,23 @@ const Header: React.FC = () => {
         >
             <div className="flex items-center justify-between h-16">
                 {/* Logo */}
-                <div className="flex items-center">
+                <div className="flex items-center space-x-3">
+                    {/* 移动端菜单按钮 */}
+                    {showMenuButton && (
+                        <Button
+                            type="text"
+                            icon={<MenuOutlined />}
+                            onClick={onMenuClick}
+                            className="lg:hidden"
+                            style={{
+                                color: token.colorTextSecondary,
+                            }}
+                            title="打开菜单"
+                        />
+                    )}
+
                     <a
-                        href="https://anyrouter.top/register?aff=lN5z"
+                        href="https://fucktic.github.io/ant-design-plus/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center space-x-2 text-xl font-bold text-blue-600 hover:text-blue-700 transition-colors"
@@ -49,7 +68,7 @@ const Header: React.FC = () => {
                     <Button
                         type="text"
                         icon={<GithubOutlined />}
-                        href="https://github.com/yourusername/ant-design-plus"
+                        href="https://github.com/fucktic/ant-design-plus"
                         target="_blank"
                         rel="noopener noreferrer"
                         title="查看 GitHub 仓库"

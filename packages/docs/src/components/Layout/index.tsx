@@ -102,7 +102,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     borderBottom: '1px solid #f0f0f0',
                 }}
             >
-                <Header />
+                <Header
+                    onMenuClick={() => setMobileMenuVisible(true)}
+                    showMenuButton={!isLargeScreen}
+                />
             </div>
 
             <div
@@ -128,16 +131,20 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 )}
 
                 {/* 移动端抽屉菜单 */}
-                <Drawer
-                    title="导航菜单"
-                    placement="left"
-                    onClose={() => setMobileMenuVisible(false)}
-                    open={mobileMenuVisible}
-                    className="lg:hidden"
-                    width={280}
-                >
-                    <div className="p-2">{siderContent}</div>
-                </Drawer>
+                {!isLargeScreen && (
+                    <Drawer
+                        title="导航菜单"
+                        placement="left"
+                        onClose={() => setMobileMenuVisible(false)}
+                        open={mobileMenuVisible}
+                        width={280}
+                        styles={{
+                            body: { padding: '8px' },
+                        }}
+                    >
+                        <div onClick={() => setMobileMenuVisible(false)}>{siderContent}</div>
+                    </Drawer>
+                )}
 
                 {/* 主内容区域 */}
                 <div
@@ -149,7 +156,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                         backgroundColor: '#ffffff',
                     }}
                 >
-                    <div className="p-6 lg:p-8">{children}</div>
+                    <div className="px-4 py-6 lg:px-8 lg:py-8">{children}</div>
                 </div>
             </div>
         </div>
