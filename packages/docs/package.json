@@ -6,9 +6,9 @@
     "type": "module",
     "scripts": {
         "dev": "vite --port 3000",
-        "build": "tsc && vite build",
-        "preview": "vite preview --port 3000",
-        "postbuild": "node ../../scripts/bump-version.cjs ../../packages/docs/package.json"
+        "build": "node ../../scripts/bump-docs.cjs && tsc && vite build",
+        "build:test": "tsc && vite build",
+        "preview": "vite preview --port 3000"
     },
     "dependencies": {
         "@ant-design/icons": "^5.5.2",

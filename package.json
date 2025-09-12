@@ -9,8 +9,11 @@
     "scripts": {
         "dev": "pnpm --filter @ant-design-plus/docs dev",
         "build": "pnpm --filter ant-design-plus-ui build",
+        "build:test": "pnpm --filter ant-design-plus-ui build:test",
         "build:docs": "pnpm --filter @ant-design-plus/docs build",
+        "build:docs:test": "pnpm --filter @ant-design-plus/docs build:test",
         "build:all": "pnpm build && pnpm build:docs",
+        "build:all:test": "pnpm build:test && pnpm build:docs:test",
         "preview:docs": "pnpm --filter @ant-design-plus/docs preview",
         "lint": "eslint packages --ext .ts,.tsx,.js,.jsx",
         "lint:fix": "eslint packages --ext .ts,.tsx,.js,.jsx --fix",
