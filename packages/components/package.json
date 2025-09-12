@@ -16,12 +16,12 @@
         "preview": "vite preview"
     },
     "peerDependencies": {
+        "antd": ">=5.0.0",
         "react": ">=18.0.0",
-        "react-dom": ">=18.0.0",
-        "antd": ">=5.0.0"
+        "react-dom": ">=18.0.0"
     },
     "devDependencies": {
-        "vite-plugin-dts": "^3.7.3"
+        "vite-plugin-dts": "^4.5.4"
     },
     "publishConfig": {
         "access": "public"

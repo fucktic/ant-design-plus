@@ -88,5 +88,12 @@
             "prettier --write"
         ]
     },
+    "pnpm": {
+        "overrides": {
+            "prismjs": ">=1.30.0",
+            "lodash.get": "npm:lodash@^4.17.21",
+            "lodash.isequal": "npm:lodash@^4.17.21"
+        }
+    },
     "type": "module"
 }
