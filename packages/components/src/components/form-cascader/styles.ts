@@ -137,6 +137,7 @@ export const StyledListItem = styled.div<{
  * 已选项目容器
  */
 export const StyledSelectedItem = styled.div`
+    margin: 8px 16px;
     padding: 2px;
     background-color: ${COLORS.itemHover};
     border-bottom: 1px solid ${COLORS.split};

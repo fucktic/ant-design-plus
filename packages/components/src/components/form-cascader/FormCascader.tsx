@@ -448,7 +448,12 @@ export const FormCascader = forwardRef<FormCascaderRef, FormCascaderProps>(
                     ) : (
                         <>
                             {/* 一级选项列表 */}
-                            <div>
+                            <div
+                                style={{
+                                    height: '100%',
+                                    overflow: 'hidden',
+                                }}
+                            >
                                 <Scrollbar
                                     showHorizontal={false}
                                     style={{ height: '100%' }}
@@ -508,7 +513,12 @@ export const FormCascader = forwardRef<FormCascaderRef, FormCascaderProps>(
                             </div>
 
                             {/* 二级选项列表 */}
-                            <div>
+                            <div
+                                style={{
+                                    height: '100%',
+                                    overflow: 'hidden',
+                                }}
+                            >
                                 <Scrollbar
                                     showHorizontal={false}
                                     style={{ height: '100%' }}
@@ -570,7 +580,12 @@ export const FormCascader = forwardRef<FormCascaderRef, FormCascaderProps>(
                     )}
 
                     {/* 已选项目列表 */}
-                    <div>
+                    <div
+                        style={{
+                            height: '100%',
+                            overflow: 'hidden',
+                        }}
+                    >
                         <Scrollbar
                             showHorizontal={false}
                             style={{ height: '100%' }}
@@ -579,6 +594,7 @@ export const FormCascader = forwardRef<FormCascaderRef, FormCascaderProps>(
                                 dataSource={selectedItems || []}
                                 header={null}
                                 footer={null}
+                                split={true}
                                 renderItem={(item: CascaderOption) => (
                                     <List.Item style={{ padding: 0, border: 'none' }}>
                                         <StyledSelectedItem>
