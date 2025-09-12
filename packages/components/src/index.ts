@@ -7,7 +7,7 @@
  */
 /* 组件导出 */
 // Scrollbar
-export { default as Scrollbar } from './components/Scrollbar'
+export { default as Scrollbar } from './components/Scrollbar/Scrollbar'
 export type { ScrollbarProps, ScrollbarRef } from './components/Scrollbar/types'
 
 // FormCascader

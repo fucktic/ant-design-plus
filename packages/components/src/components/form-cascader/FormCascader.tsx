@@ -28,7 +28,7 @@ import React, {
 } from 'react'
 import { CloseOutlined, RightOutlined } from '@ant-design/icons'
 import { CheckboxChangeEvent, Empty, List, Typography, theme } from 'antd'
-import Scrollbar from '../Scrollbar'
+import Scrollbar from '../Scrollbar/Scrollbar'
 
 // 导入类型定义
 import type {
@@ -193,7 +193,7 @@ export const FormCascader = forwardRef<FormCascaderRef, FormCascaderProps>(
             }
 
             loadInitialData()
-        }, [])
+        }, [onLoadLevel1Data])
 
         /**
          * 当options加载完成后，自动选择第一个项目
@@ -271,7 +271,7 @@ export const FormCascader = forwardRef<FormCascaderRef, FormCascaderProps>(
                 // 否则使用 children 的长度进行比较
                 return selectedChildCount > 0 && selectedChildCount < item.children.length
             },
-            [selectedValueSet, options]
+            [selectedValueSet]
         )
 
         /**
@@ -313,10 +313,6 @@ export const FormCascader = forwardRef<FormCascaderRef, FormCascaderProps>(
             level2Loading,
             loadAndUpdateLevel2Data,
             level2PageSize,
-            isLevel1ItemIndeterminate,
-            selectedItems,
-            maxSelectNum,
-            selectedValueSet,
         ])
 
         /**
