@@ -183,7 +183,12 @@ export const ModalColumnCustom = (props: ModalColumnCustomProps) => {
                             showHorizontal={true}
                             style={{ height: MODAL_CONFIG.LIST_HEIGHT }}
                         >
-                            <ul className="adp-available-columns-list">
+                            <div
+                                className="adp-available-columns-list"
+                                style={{
+                                    height: MODAL_CONFIG.LIST_HEIGHT,
+                                }}
+                            >
                                 {(displayedOptions || options).map((columnOption) => {
                                     const isSelected = selectedColumns.some(
                                         (item) => item.value === columnOption.value
@@ -214,7 +219,7 @@ export const ModalColumnCustom = (props: ModalColumnCustomProps) => {
                                         </li>
                                     )
                                 })}
-                            </ul>
+                            </div>
                         </Scrollbar>
 
                         {/* 右侧：已选列表格 */}
