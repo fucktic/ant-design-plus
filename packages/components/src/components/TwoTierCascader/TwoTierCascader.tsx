@@ -42,11 +42,10 @@ import type {
 import { createSelectedValueSet, isSelectedLimitReached, calculateCheckedCount } from './utils'
 
 // 导入子组件
-import { CascaderListItem } from './CascaderListItem'
-import { CascaderCheckbox } from './CascaderCheckbox'
+import { CascaderListItem, CascaderCheckbox } from './components'
 
 // 导入样式
-import { StyledTwoTierCascader, StyledHeader, StyledBody, StyledSelectedItem } from './styles'
+import { StyledTwoTierCascader } from './styles'
 
 const { Link, Paragraph } = Typography
 
@@ -416,7 +415,7 @@ export const TwoTierCascader = forwardRef<TwoTierCascaderRef, TwoTierCascaderPro
                 className={className}
             >
                 {/* 头部标签栏 */}
-                <StyledHeader $token={token}>
+                <div className="adp-two-tier-cascader-header">
                     <div>{headerLabels.level1}</div>
                     <div>{headerLabels.level2}</div>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -425,10 +424,10 @@ export const TwoTierCascader = forwardRef<TwoTierCascaderRef, TwoTierCascaderPro
                         >{`${headerLabels.selected}（${selectedItems.length}/${maxSelectNum}）`}</span>
                         <Link onClick={handleClearAllSelected}>清空</Link>
                     </div>
-                </StyledHeader>
+                </div>
 
                 {/* 主体内容区 */}
-                <StyledBody $token={token}>
+                <div className="adp-two-tier-cascader-body">
                     {!options.length ? (
                         // 空数据状态
                         <div
@@ -471,7 +470,11 @@ export const TwoTierCascader = forwardRef<TwoTierCascaderRef, TwoTierCascaderPro
                                                     !isLevel1ItemChecked(item) &&
                                                     !isLevel1ItemIndeterminate(item)
                                                 }
-                                                onClick={(e) => handleClickLevel1(item, e)}
+                                                onClick={() =>
+                                                    handleClickLevel1(item, {
+                                                        stopPropagation: () => {},
+                                                    } as React.MouseEvent)
+                                                }
                                             >
                                                 <div
                                                     style={{
@@ -594,7 +597,7 @@ export const TwoTierCascader = forwardRef<TwoTierCascaderRef, TwoTierCascaderPro
                                 split={true}
                                 renderItem={(item: CascaderOption) => (
                                     <List.Item style={{ padding: 0, border: 'none' }}>
-                                        <StyledSelectedItem>
+                                        <div className="adp-two-tier-cascader-selected-item">
                                             <div
                                                 style={{
                                                     display: 'flex',
@@ -636,13 +639,13 @@ export const TwoTierCascader = forwardRef<TwoTierCascaderRef, TwoTierCascaderPro
                                                     onClick={() => handleRemoveSelectedItem(item)}
                                                 />
                                             </div>
-                                        </StyledSelectedItem>
+                                        </div>
                                     </List.Item>
                                 )}
                             />
                         </Scrollbar>
                     </div>
-                </StyledBody>
+                </div>
             </StyledTwoTierCascader>
         )
     }

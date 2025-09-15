@@ -21,8 +21,7 @@ export { TwoTierCascaderNamed as TwoTierCascader }
 export default TwoTierCascaderComponent
 
 // 导出子组件
-export { CascaderListItem } from './CascaderListItem'
-export { CascaderCheckbox } from './CascaderCheckbox'
+export { CascaderListItem, CascaderCheckbox } from './components'
 
 // 导出类型定义
 export type {

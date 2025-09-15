@@ -6,7 +6,7 @@
 
 import React from 'react'
 import { Checkbox, CheckboxChangeEvent, Typography } from 'antd'
-import type { CascaderOption } from './types'
+import type { CascaderOption } from '../types'
 
 const { Paragraph } = Typography
 
@@ -25,6 +25,8 @@ export interface CascaderCheckboxProps {
     checked?: boolean
     /** 是否禁用 */
     disabled?: boolean
+    /** CSS类名 */
+    className?: string
 }
 
 export const CascaderCheckbox: React.FC<CascaderCheckboxProps> = ({
@@ -33,24 +35,30 @@ export const CascaderCheckbox: React.FC<CascaderCheckboxProps> = ({
     indeterminate,
     checked,
     disabled,
-}) => (
-    <div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
-        <Checkbox
-            onChange={onChange}
-            indeterminate={indeterminate}
-            checked={checked}
-            disabled={disabled}
-        />
-        <Paragraph
-            style={{ marginBottom: 0, marginLeft: 8, userSelect: 'none' }}
-            ellipsis={{
-                rows: 1,
-                tooltip: item.label,
-            }}
-        >
-            {item.label}
-        </Paragraph>
-    </div>
-)
+    className = '',
+}) => {
+    const baseClassName = 'adp-cascader-checkbox'
+    const finalClassName = [baseClassName, className].filter(Boolean).join(' ')
+
+    return (
+        <div className={finalClassName}>
+            <Checkbox
+                onChange={onChange}
+                indeterminate={indeterminate}
+                checked={checked}
+                disabled={disabled}
+            />
+            <Paragraph
+                className={`adp-cascader-checkbox__label`}
+                ellipsis={{
+                    rows: 1,
+                    tooltip: item.label,
+                }}
+            >
+                {item.label}
+            </Paragraph>
+        </div>
+    )
+}
 
 export default CascaderCheckbox

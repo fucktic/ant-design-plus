@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { GlobalToken } from 'antd/es/theme/interface'
 import { CSSProperties } from 'react'
 
@@ -31,89 +31,36 @@ export const StyledTwoTierCascader = styled.div<StyledTwoTierCascaderProps>`
     border-radius: 4px;
     display: flex;
     flex-direction: column;
-`
 
-/**
- * 头部区域
- */
-export const StyledHeader = styled.div<{ $token: GlobalToken }>`
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    background-color: ${COLORS.bgLayout};
-    border-bottom: 1px solid ${COLORS.border};
+    /* 子组件样式 - CascaderListItem */
+    .adp-cascader-list-item {
+        padding: 8px 16px;
+        cursor: pointer;
+        transition: all 0.2s;
 
-    /* 头部每列的基础样式 */
-    > div {
-        line-height: 40px;
-        padding: 0 16px;
-        font-weight: 500;
-    }
+        display: flex;
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
 
-    /* 添加分割线，最后一列不需要右边框 */
-    > div:not(:last-child) {
-        border-right: 1px solid ${COLORS.border};
-    }
-`
+        &:last-child {
+            border-bottom: none;
+        }
 
-/**
- * 主体区域
- */
-export const StyledBody = styled.div<{ $token: GlobalToken }>`
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    flex: 1;
-    overflow: hidden;
+        /* 悬停效果（排除激活和禁用状态） */
+        &:not(.adp-cascader-list-item--active):not(.adp-cascader-list-item--disabled):hover {
+            background: ${COLORS.itemHover};
+        }
 
-    /* 添加分割线，最后一列不需要右边框 */
-    > div:not(:last-child) {
-        border-right: 1px solid ${COLORS.border};
-    }
-`
-
-/**
- * 列表项基础样式
- */
-export const StyledListItem = styled.div<{
-    $active?: boolean
-    $disabled?: boolean
-    $selected?: boolean
-}>`
-    padding: 8px 16px;
-    cursor: pointer;
-    transition: all 0.2s;
-    border-bottom: 1px solid ${COLORS.split};
-    display: flex;
-    align-items: center;
-    width: 100%;
-    box-sizing: border-box;
-
-    &:last-child {
-        border-bottom: none;
-    }
-
-    /* 悬停效果（排除激活状态的项目） */
-    ${(props) =>
-        !props.$active &&
-        !props.$disabled &&
-        css`
-            &:hover {
-                background: ${COLORS.itemHover};
-            }
-        `}
-
-    /* 激活状态的列表项 */
-    ${(props) =>
-        props.$active &&
-        css`
+        /* 激活状态 */
+        &.adp-cascader-list-item--active {
             color: rgba(0, 0, 0, 0.88);
             font-weight: 500;
             background-color: ${COLORS.activeBackground};
-        `}
+        }
 
-    /* 禁用状态的列表项 */
-    ${(props) =>
-        props.$disabled &&
-        css`
+        /* 禁用状态 */
+        &.adp-cascader-list-item--disabled {
             cursor: not-allowed;
             border-color: ${COLORS.border};
             color: ${COLORS.disabledText};
@@ -123,30 +70,117 @@ export const StyledListItem = styled.div<{
             &:hover {
                 background: ${COLORS.disabledBg};
             }
-        `}
+        }
+    }
 
-    /* 选中状态的列表项 */
-    ${(props) =>
-        props.$selected &&
-        css`
+    /* 子组件样式 - CascaderCheckbox */
+    .adp-cascader-checkbox {
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        .adp-cascader-checkbox__label {
+            margin-bottom: 0;
+            margin-left: 8px;
+            user-select: none;
+        }
+    }
+
+    /* 头部区域样式 */
+    .adp-two-tier-cascader-header {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        background-color: ${COLORS.bgLayout};
+        border-bottom: 1px solid ${COLORS.border};
+
+        /* 头部每列的基础样式 */
+        > div {
+            line-height: 40px;
+            padding: 0 16px;
+            font-weight: 500;
+        }
+
+        /* 添加分割线，最后一列不需要右边框 */
+        > div:not(:last-child) {
+            border-right: 1px solid ${COLORS.border};
+        }
+    }
+
+    /* 主体区域样式 */
+    .adp-two-tier-cascader-body {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        flex: 1;
+        overflow: hidden;
+
+        /* 添加分割线，最后一列不需要右边框 */
+        > div:not(:last-child) {
+            border-right: 1px solid ${COLORS.border};
+        }
+    }
+
+    /* 列表项基础样式 */
+    .adp-two-tier-cascader-list-item {
+        padding: 8px 16px;
+        cursor: pointer;
+        transition: all 0.2s;
+
+        display: flex;
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        /* 悬停效果（排除激活状态的项目） */
+        &:not(.adp-two-tier-cascader-list-item--active):not(
+                .adp-two-tier-cascader-list-item--disabled
+            ):hover {
+            background: ${COLORS.itemHover};
+        }
+
+        /* 激活状态的列表项 */
+        &.adp-two-tier-cascader-list-item--active {
+            color: rgba(0, 0, 0, 0.88);
+            font-weight: 500;
             background-color: ${COLORS.activeBackground};
-        `}
-`
+        }
 
-/**
- * 已选项目容器
- */
-export const StyledSelectedItem = styled.div`
-    margin: 4px 16px;
-    padding: 2px;
-    background-color: ${COLORS.itemHover};
-    border-bottom: 1px solid ${COLORS.split};
-    display: flex;
-    align-items: center;
-    width: 100%;
-    box-sizing: border-box;
-    &:last-child {
-        border-bottom: none;
+        /* 禁用状态的列表项 */
+        &.adp-two-tier-cascader-list-item--disabled {
+            cursor: not-allowed;
+            border-color: ${COLORS.border};
+            color: ${COLORS.disabledText};
+            background: ${COLORS.disabledBg};
+            box-shadow: none;
+
+            &:hover {
+                background: ${COLORS.disabledBg};
+            }
+        }
+
+        /* 选中状态的列表项 */
+        &.adp-two-tier-cascader-list-item--selected {
+            background-color: ${COLORS.activeBackground};
+        }
+    }
+
+    /* 已选项目容器样式 */
+    .adp-two-tier-cascader-selected-item {
+        margin: 4px 16px;
+        padding: 2px;
+        background-color: ${COLORS.itemHover};
+        border-bottom: 1px solid ${COLORS.split};
+        display: flex;
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
+
+        &:last-child {
+            border-bottom: none;
+        }
     }
 `
 
