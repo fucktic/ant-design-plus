@@ -69,6 +69,24 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             ],
         },
         {
+            key: 'data-display',
+            label: <div>数据展示</div>,
+            type: 'group' as const,
+            children: [
+                {
+                    key: '/data-display/table-drag-handle',
+                    label: (
+                        <Link
+                            to="/data-display/table-drag-handle"
+                            className="text-gray-700 dark:text-gray-300 hover:text-blue-600"
+                        >
+                            TableDragHandle 表格拖拽
+                        </Link>
+                    ),
+                },
+            ],
+        },
+        {
             key: 'other',
             label: <div>其它</div>,
             type: 'group' as const,

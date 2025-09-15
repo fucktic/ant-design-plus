@@ -24,3 +24,8 @@ export type {
     Level1DataResponse,
     Level2DataResponse,
 } from './components/two-tier-cascader/types'
+
+// TableDragHandle
+export { default as TableDragHandle } from './components/TableDragHandle'
+export { TableDragHandle as _TableDragHandle } from './components/TableDragHandle'
+export type { TableDragHandleProps } from './components/TableDragHandle/types'

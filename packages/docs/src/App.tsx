@@ -14,6 +14,7 @@ import Changelog from './pages/Changelog'
 import ScrollbarDemo from './pages/components/ScrollbarDemo'
 import CodeHighlightDemo from './pages/CodeHighlightDemo'
 import TwoTierCascaderDemo from './pages/components/TwoTierCascaderDemo'
+import TableDragHandleDemo from './pages/components/TableDragHandleDemo'
 
 const App: React.FC = () => {
     return (
@@ -39,6 +40,10 @@ const App: React.FC = () => {
                     <Route
                         path="/form/two-tier-cascader"
                         element={<TwoTierCascaderDemo />}
+                    />
+                    <Route
+                        path="/data-display/table-drag-handle"
+                        element={<TableDragHandleDemo />}
                     />
                 </Routes>
             </Layout>
