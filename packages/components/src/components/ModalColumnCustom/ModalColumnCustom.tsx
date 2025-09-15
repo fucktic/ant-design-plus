@@ -27,6 +27,7 @@ export const ModalColumnCustom = (props: ModalColumnCustomProps) => {
         options,
         defaultSelecteds,
         modalProps,
+        currentSelecteds = [],
         headerLabels = {
             column: '可添加列',
             onlySelected: '仅看已选列',
@@ -46,10 +47,12 @@ export const ModalColumnCustom = (props: ModalColumnCustomProps) => {
     // 初始化选中列
     useEffect(() => {
         if (open && defaultSelecteds.length > 0) {
-            const defaultColumns = options.filter((item) => defaultSelecteds.includes(item.value))
+            const defaultColumns = options.filter((item) =>
+                [...new Set([...currentSelecteds, ...defaultSelecteds])].includes(item.value)
+            )
             setSelectedColumns(defaultColumns)
         }
-    }, [open, options, defaultSelecteds])
+    }, [open, options, defaultSelecteds, currentSelecteds])
 
     // 重置已选列为默认选中状态
     const resetToDefaultSelections = useCallback(() => {

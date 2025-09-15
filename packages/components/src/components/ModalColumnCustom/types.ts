@@ -21,6 +21,10 @@ export interface ModalColumnCustomProps {
     onClose: () => void
     /** 提交选中列回调 */
     onSubmit: (selectedValues: string[]) => Promise<boolean>
+    /**
+     * 当前选中列
+     */
+    currentSelecteds?: string[]
     /** 可选择的列配置列表 */
     options: ColumnCustomType[]
     /** 默认选中的列值 */

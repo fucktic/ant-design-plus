@@ -266,6 +266,7 @@ export default BasicExample;`}
                             onSubmit={handleBasicSubmit}
                             options={basicOptions}
                             defaultSelecteds={basicSelectedColumns}
+                            currentSelecteds={['name', 'age', 'gender']}
                         />
                     </div>
                 </DemoContainer>
