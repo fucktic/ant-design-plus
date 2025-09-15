@@ -6,8 +6,12 @@
 export const MODAL_CONFIG = {
     /** 模态框宽度 */
     WIDTH: 800,
+    /** 模态框宽度 (别名) */
+    MODAL_WIDTH: 800,
     /** 列表高度 */
     LIST_HEIGHT: 474,
+    /** 内容高度 */
+    CONTENT_HEIGHT: 474,
     /** 搜索输入框宽度 */
     SEARCH_INPUT_WIDTH: '320px',
 } as const
@@ -15,7 +19,8 @@ export const MODAL_CONFIG = {
 // 样式常量
 export const STYLES = {
     /** 删除图标样式 */
-    DELETE_ICON: "h-3 w-3 text-gray-500 cursor-pointer rounded hover:text-gray-800 active:hover:text-gray-300",
+    DELETE_ICON:
+        'h-3 w-3 text-gray-500 cursor-pointer rounded hover:text-gray-800 active:hover:text-gray-300',
 } as const
 
 // 文本常量

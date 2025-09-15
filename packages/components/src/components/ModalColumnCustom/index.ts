@@ -1,9 +1,9 @@
-export { default, ModalColumnCustom } from './ModalColumnCustom'
+export { ModalColumnCustom, ModalColumnCustom as default } from './ModalColumnCustom'
 export type {
     ColumnCustomType,
     ModalColumnCustomProps,
     ColumnSelectionState,
     ColumnSelectionActions,
     UseColumnSelectionParams,
-    UseColumnSelectionReturn
+    UseColumnSelectionReturn,
 } from './types'

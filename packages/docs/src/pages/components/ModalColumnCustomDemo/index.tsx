@@ -15,7 +15,11 @@ const ModalColumnCustomDemo: React.FC = () => {
 
     // 高级示例状态
     const [advancedOpen, setAdvancedOpen] = useState(false)
-    const [advancedSelectedColumns, setAdvancedSelectedColumns] = useState<string[]>(['productName', 'price', 'category'])
+    const [advancedSelectedColumns, setAdvancedSelectedColumns] = useState<string[]>([
+        'productName',
+        'price',
+        'category',
+    ])
 
     // 事件回调示例状态
     const [eventOpen, setEventOpen] = useState(false)
@@ -65,7 +69,7 @@ const ModalColumnCustomDemo: React.FC = () => {
         { label: '描述', value: '11' },
         { label: '标签', value: '12' },
         { label: '评分', value: '13' },
-        { label: '销量', value: '13' },
+        { label: '销量', value: '14' },
         { label: '重量', value: '15' },
     ]
 
@@ -103,10 +107,10 @@ const ModalColumnCustomDemo: React.FC = () => {
     // 事件回调提交处理
     const handleEventSubmit = async (selectedValues: string[]) => {
         console.log('事件回调示例选中的列:', selectedValues)
-        
+
         // 模拟异步操作
-        await new Promise(resolve => setTimeout(resolve, 1000))
-        
+        await new Promise((resolve) => setTimeout(resolve, 1000))
+
         setEventSelectedColumns(selectedValues)
         setEventOpen(false)
         message.success(`文章列表配置已保存，共 ${selectedValues.length} 列`)
@@ -115,8 +119,8 @@ const ModalColumnCustomDemo: React.FC = () => {
 
     // 获取选中列的显示标签
     const getSelectedLabels = (selectedValues: string[], options: ColumnCustomType[]) => {
-        return selectedValues.map(value => {
-            const option = options.find(opt => opt.value === value)
+        return selectedValues.map((value) => {
+            const option = options.find((opt) => opt.value === value)
             return option?.label || value
         })
     }
@@ -233,18 +237,27 @@ export default BasicExample;`}
                 >
                     <div>
                         <Space style={{ marginBottom: 16 }}>
-                            <Button type="primary" onClick={() => setBasicOpen(true)}>
+                            <Button
+                                type="primary"
+                                onClick={() => setBasicOpen(true)}
+                            >
                                 自定义列
                             </Button>
                             <span>当前显示列:</span>
                         </Space>
-                        
+
                         <div style={{ marginBottom: 16 }}>
-                            {getSelectedLabels(basicSelectedColumns, basicOptions).map((label, index) => (
-                                <Tag key={index} color="blue" style={{ marginBottom: 4 }}>
-                                    {label}
-                                </Tag>
-                            ))}
+                            {getSelectedLabels(basicSelectedColumns, basicOptions).map(
+                                (label, index) => (
+                                    <Tag
+                                        key={index}
+                                        color="blue"
+                                        style={{ marginBottom: 4 }}
+                                    >
+                                        {label}
+                                    </Tag>
+                                )
+                            )}
                         </div>
 
                         <ModalColumnCustom
@@ -317,20 +330,31 @@ export default AdvancedExample;`}
                 >
                     <div>
                         <Space style={{ marginBottom: 16 }}>
-                            <Button type="primary" onClick={() => setAdvancedOpen(true)}>
+                            <Button
+                                type="primary"
+                                onClick={() => setAdvancedOpen(true)}
+                            >
                                 配置产品列表
                             </Button>
                             <span>已选择 {advancedSelectedColumns.length} 列</span>
                         </Space>
 
                         <div style={{ marginBottom: 16 }}>
-                            {getSelectedLabels(advancedSelectedColumns, advancedOptions).slice(0, 8).map((label, index) => (
-                                <Tag key={index} color="green" style={{ marginBottom: 4 }}>
-                                    {label}
-                                </Tag>
-                            ))}
+                            {getSelectedLabels(advancedSelectedColumns, advancedOptions)
+                                .slice(0, 8)
+                                .map((label, index) => (
+                                    <Tag
+                                        key={index}
+                                        color="green"
+                                        style={{ marginBottom: 4 }}
+                                    >
+                                        {label}
+                                    </Tag>
+                                ))}
                             {advancedSelectedColumns.length > 8 && (
-                                <Tag color="default">+{advancedSelectedColumns.length - 8} 更多</Tag>
+                                <Tag color="default">
+                                    +{advancedSelectedColumns.length - 8} 更多
+                                </Tag>
                             )}
                         </div>
 
@@ -346,7 +370,7 @@ export default AdvancedExample;`}
 
                 <DemoContainer
                     title="异步提交和事件回调"
-                    description="演示异步提交处理和使用 ref 调用组件方法。"
+                    description="演示异步提交处理和通过回调函数与父组件通信。"
                     code={`import React, { useState } from 'react';
 import { Button, Space, Tag, message } from 'antd';
 import { ModalColumnCustom, ColumnCustomType } from 'ant-design-plus-ui';
@@ -414,7 +438,10 @@ export default EventExample;`}
                 >
                     <div>
                         <Space style={{ marginBottom: 16 }}>
-                            <Button type="primary" onClick={() => setEventOpen(true)}>
+                            <Button
+                                type="primary"
+                                onClick={() => setEventOpen(true)}
+                            >
                                 配置文章列表
                             </Button>
                             <Button onClick={handleReset}>重置选择</Button>
@@ -422,11 +449,17 @@ export default EventExample;`}
                         </Space>
 
                         <div style={{ marginBottom: 16 }}>
-                            {getSelectedLabels(eventSelectedColumns, eventOptions).map((label, index) => (
-                                <Tag key={index} color="orange" style={{ marginBottom: 4 }}>
-                                    {label}
-                                </Tag>
-                            ))}
+                            {getSelectedLabels(eventSelectedColumns, eventOptions).map(
+                                (label, index) => (
+                                    <Tag
+                                        key={index}
+                                        color="orange"
+                                        style={{ marginBottom: 4 }}
+                                    >
+                                        {label}
+                                    </Tag>
+                                )
+                            )}
                         </div>
 
                         <ModalColumnCustom
@@ -473,8 +506,6 @@ interface ColumnCustomType {
                     showCopyButton={true}
                     showThemeSelector={false}
                 />
-
-               
             </div>
         </div>
     )

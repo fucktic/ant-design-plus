@@ -11,19 +11,19 @@ export { default as Scrollbar } from './components/Scrollbar/Scrollbar'
 export type { ScrollbarProps, ScrollbarRef } from './components/Scrollbar/types'
 
 // TwoTierCascader
-export { default as TwoTierCascader } from './components/two-tier-cascader'
+export { default as TwoTierCascader } from './components/TwoTierCascader'
 export {
     TwoTierCascader as _TwoTierCascader, // 具名导出，便于树摇与类型推导
     CascaderListItem,
     CascaderCheckbox,
-} from './components/two-tier-cascader'
+} from './components/TwoTierCascader'
 export type {
     CascaderOption,
     TwoTierCascaderProps,
     TwoTierCascaderRef,
     Level1DataResponse,
     Level2DataResponse,
-} from './components/two-tier-cascader/types'
+} from './components/TwoTierCascader/types'
 
 // TableDragHandle
 export { default as TableDragHandle } from './components/TableDragHandle'
@@ -34,4 +34,3 @@ export type { TableDragHandleProps } from './components/TableDragHandle/types'
 export { default as ModalColumnCustom } from './components/ModalColumnCustom'
 export { ModalColumnCustom as _ModalColumnCustom } from './components/ModalColumnCustom'
 export type { ModalColumnCustomProps, ColumnCustomType } from './components/ModalColumnCustom'
-

@@ -9,18 +9,13 @@ import React, {
 import { theme } from 'antd'
 import { ScrollbarProps, ScrollbarRef } from './types'
 import { DEFAULT_CONFIG } from './constants'
-import { validateScrollbarConfig, getScrollbarClassNames, safeScrollTo } from './utils'
+import { validateScrollbarConfig, safeScrollTo } from './utils'
 import { useScrollbarCalculation } from './hooks/useScrollbarCalculation'
 import { useScrollbarDrag } from './hooks/useScrollbarDrag'
 import { useScrollbarState } from './hooks/useScrollbarState'
 import { useScrollbarEvents } from './hooks/useScrollbarEvents'
-import {
-    StyledScrollbarContainer,
-    StyledContentWrapper,
-    StyledContent,
-    StyledTrack,
-    StyledThumb,
-} from './styles'
+import { ContentWrapper, Content, Track, Thumb } from './components'
+import { StyledScrollbarContainer } from './styles'
 
 /**
  * 高性能自定义滚动条组件
@@ -109,8 +104,8 @@ const Scrollbar = forwardRef<ScrollbarRef, ScrollbarProps>(
             setUpdateCallback(calculateScrollbarState)
         }, [setUpdateCallback, calculateScrollbarState])
 
-        // 滚动事件处理
-        const handleScrollEvent = useCallback(
+        // 滚动事件处理 - 适配 hook 期望的 Event 类型
+        const handleScrollEventForHook = useCallback(
             (event: Event) => {
                 handleStateScroll(event)
                 onScroll?.(event)
@@ -124,11 +119,20 @@ const Scrollbar = forwardRef<ScrollbarRef, ScrollbarProps>(
             [handleStateScroll, onScroll, onScrollToBottom]
         )
 
+        // React 事件处理 - 用于组件内部
+        const handleScrollEvent = useCallback(
+            (event: React.UIEvent<HTMLDivElement>) => {
+                const nativeEvent = event.nativeEvent
+                handleScrollEventForHook(nativeEvent)
+            },
+            [handleScrollEventForHook]
+        )
+
         // 事件管理
         useScrollbarEvents({
             containerRef,
             contentRef,
-            onScroll: handleScrollEvent,
+            onScroll: handleScrollEventForHook,
             onResize: handleResize,
             onContentChange: refresh,
         })
@@ -214,19 +218,9 @@ const Scrollbar = forwardRef<ScrollbarRef, ScrollbarProps>(
             return `${baseClass} ${stateClasses}`.trim()
         }, [config.prefixCls, className, isDragging, isHovered, isVisible])
 
-        const verticalClassNames = useMemo(
-            () => getScrollbarClassNames(config.prefixCls, 'vertical', isDragging, isHovered),
-            [config.prefixCls, isDragging, isHovered]
-        )
-
-        const horizontalClassNames = useMemo(
-            () => getScrollbarClassNames(config.prefixCls, 'horizontal', isDragging, isHovered),
-            [config.prefixCls, isDragging, isHovered]
-        )
-
         return (
             <StyledScrollbarContainer
-                className={containerClassNames}
+                className={`adp-scrollbar-container ${containerClassNames}`}
                 style={style}
                 $scrollbarSize={config.scrollbarSize}
                 $scrollbarColor={config.scrollbarColor}
@@ -235,76 +229,55 @@ const Scrollbar = forwardRef<ScrollbarRef, ScrollbarProps>(
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
             >
-                <StyledContentWrapper
+                <ContentWrapper
                     ref={containerRef}
-                    className={`${config.prefixCls}-content-wrapper`}
+                    onScroll={handleScrollEvent}
                 >
-                    <StyledContent
-                        ref={contentRef}
-                        className={`${config.prefixCls}-content`}
-                    >
-                        {children}
-                    </StyledContent>
-                </StyledContentWrapper>
+                    <Content ref={contentRef}>{children}</Content>
+                </ContentWrapper>
 
                 {/* 垂直滚动条 */}
                 {scrollbarState.needVertical && (autoHide ? isVisible : true) && (
-                    <StyledTrack
-                        className={verticalClassNames.track}
-                        $direction="vertical"
-                        $scrollbarSize={config.scrollbarSize}
-                        $trackColor={config.trackColor}
-                        $token={token}
+                    <Track
+                        direction="vertical"
                         style={{
                             height: scrollbarState.needHorizontal
                                 ? `calc(100% - ${config.scrollbarSize + DEFAULT_CONFIG.TRACK_PADDING}px)`
                                 : '100%',
                         }}
                     >
-                        <StyledThumb
+                        <Thumb
                             ref={verticalThumbRef}
-                            className={verticalClassNames.thumb}
-                            $direction="vertical"
-                            $scrollbarSize={config.scrollbarSize}
-                            $scrollbarColor={config.scrollbarColor}
-                            $token={token}
+                            direction="vertical"
                             style={{
                                 height: scrollbarState.verticalThumbHeight,
                                 transform: `translateY(${scrollbarState.verticalThumbTop}px)`,
                             }}
                             onMouseDown={onVerticalMouseDown}
                         />
-                    </StyledTrack>
+                    </Track>
                 )}
 
                 {/* 水平滚动条 */}
                 {scrollbarState.needHorizontal && (autoHide ? isVisible : true) && (
-                    <StyledTrack
-                        className={horizontalClassNames.track}
-                        $direction="horizontal"
-                        $scrollbarSize={config.scrollbarSize}
-                        $trackColor={config.trackColor}
-                        $token={token}
+                    <Track
+                        direction="horizontal"
                         style={{
                             width: scrollbarState.needVertical
                                 ? `calc(100% - ${config.scrollbarSize + DEFAULT_CONFIG.TRACK_PADDING}px)`
                                 : '100%',
                         }}
                     >
-                        <StyledThumb
+                        <Thumb
                             ref={horizontalThumbRef}
-                            className={horizontalClassNames.thumb}
-                            $direction="horizontal"
-                            $scrollbarSize={config.scrollbarSize}
-                            $scrollbarColor={config.scrollbarColor}
-                            $token={token}
+                            direction="horizontal"
                             style={{
                                 width: scrollbarState.horizontalThumbWidth,
                                 transform: `translateX(${scrollbarState.horizontalThumbLeft}px)`,
                             }}
                             onMouseDown={onHorizontalMouseDown}
                         />
-                    </StyledTrack>
+                    </Track>
                 )}
             </StyledScrollbarContainer>
         )
