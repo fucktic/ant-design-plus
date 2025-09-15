@@ -1,3 +1,4 @@
+import type { ModalProps } from 'antd'
 /**
  * 列配置选项类型
  */
@@ -30,6 +31,7 @@ export interface ModalColumnCustomProps {
         all: string
         selected: string
     }
+    modalProps?: ModalProps
 }
 
 /**

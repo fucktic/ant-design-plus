@@ -1,5 +1,15 @@
 import { useState, useCallback, useMemo, useEffect } from 'react'
-import { Modal, TableProps, Input, Checkbox, Button, Typography, theme, Space } from 'antd'
+import {
+    Modal,
+    TableProps,
+    Input,
+    Checkbox,
+    Button,
+    Typography,
+    theme,
+    Space,
+    ModalProps,
+} from 'antd'
 
 const { Link } = Typography
 import { CloseOutlined, SearchOutlined } from '@ant-design/icons'
@@ -16,6 +26,7 @@ export const ModalColumnCustom = (props: ModalColumnCustomProps) => {
         onSubmit,
         options,
         defaultSelecteds,
+        modalProps,
         headerLabels = {
             column: '可添加列',
             onlySelected: '仅看已选列',
@@ -176,16 +187,34 @@ export const ModalColumnCustom = (props: ModalColumnCustomProps) => {
     useEffect(() => {
         updateDisplayedOptions()
     }, [updateDisplayedOptions])
-
+    const modalConfig: ModalProps = {
+        open,
+        onCancel: onClose,
+        width: MODAL_CONFIG.WIDTH,
+        title: TEXTS.MODAL_TITLE,
+        ...modalProps,
+        destroyOnHidden: true,
+        centered: true,
+        footer: (
+            <div className="adp-footer-buttons">
+                <Button
+                    onClick={onClose}
+                    style={{ marginRight: 8 }}
+                >
+                    {TEXTS.CANCEL}
+                </Button>
+                <Button
+                    type="primary"
+                    onClick={handleSubmit}
+                    loading={isSubmitting}
+                >
+                    {TEXTS.CONFIRM}
+                </Button>
+            </div>
+        ),
+    }
     return (
-        <Modal
-            title={TEXTS.MODAL_TITLE}
-            open={open}
-            onCancel={onClose}
-            width={MODAL_CONFIG.MODAL_WIDTH}
-            footer={null}
-            destroyOnHidden
-        >
+        <Modal {...modalConfig}>
             <StyledModalContent
                 $colorBorder={token.colorBorder}
                 $colorBgLayout={token.colorFillAlter}
@@ -301,23 +330,6 @@ export const ModalColumnCustom = (props: ModalColumnCustomProps) => {
                             />
                         </div>
                     </div>
-                </div>
-
-                {/* 底部按钮 */}
-                <div className="adp-footer-buttons">
-                    <Button
-                        onClick={onClose}
-                        style={{ marginRight: 8 }}
-                    >
-                        {TEXTS.CANCEL}
-                    </Button>
-                    <Button
-                        type="primary"
-                        onClick={handleSubmit}
-                        loading={isSubmitting}
-                    >
-                        {TEXTS.CONFIRM}
-                    </Button>
                 </div>
             </StyledModalContent>
         </Modal>
