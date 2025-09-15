@@ -7,7 +7,7 @@
     "scripts": {
         "dev": "vite --port 3000",
         "build": "node ../../scripts/bump-docs.cjs && tsc && vite build",
-        "build:test": "tsc && vite build",
+        "build:pro": "tsc && vite build",
         "preview": "vite preview --port 3000"
     },
     "dependencies": {

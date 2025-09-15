@@ -3,15 +3,16 @@
     "version": "2.4.0",
     "description": "A React component library based on Ant Design",
     "private": true,
+    
     "workspaces": [
         "packages/*"
     ],
     "scripts": {
         "dev": "pnpm --filter @ant-design-plus/docs dev",
-        "build": "pnpm --filter ant-design-plus-ui build",
-        "build:test": "pnpm --filter ant-design-plus-ui build:test",
-        "build:docs": "pnpm --filter @ant-design-plus/docs build",
-        "build:docs:test": "pnpm --filter @ant-design-plus/docs build:test",
+        "build": "pnpm --filter ant-design-plus-ui build:test",
+        "build:pro": "pnpm --filter ant-design-plus-ui build",
+        "build:docs": "pnpm --filter @ant-design-plus/docs build:test",
+        "build:docs:pro": "pnpm --filter @ant-design-plus/docs build",
         "build:all": "pnpm build && pnpm build:docs",
         "build:all:test": "pnpm build:test && pnpm build:docs:test",
         "preview:docs": "pnpm --filter @ant-design-plus/docs preview",
