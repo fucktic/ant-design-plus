@@ -2,7 +2,7 @@ import { useState, useCallback, useMemo, useEffect } from 'react'
 import { Modal, TableProps, Input, Checkbox, Button, Typography, theme, Space } from 'antd'
 
 const { Link } = Typography
-import { CloseOutlined } from '@ant-design/icons'
+import { CloseOutlined, SearchOutlined } from '@ant-design/icons'
 import Scrollbar from '../Scrollbar/Scrollbar'
 import { TableDragHandle } from '../TableDragHandle'
 import { ColumnCustomType, ModalColumnCustomProps } from './types'
@@ -195,6 +195,7 @@ export const ModalColumnCustom = (props: ModalColumnCustomProps) => {
                     className="adp-search-input"
                     placeholder={TEXTS.SEARCH_PLACEHOLDER}
                     allowClear
+                    suffix={<SearchOutlined />}
                     onChange={(e) => updateDisplayedOptions(e.target.value)}
                 />
 
