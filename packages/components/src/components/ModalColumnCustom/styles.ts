@@ -20,6 +20,7 @@ export const StyledModalContent = styled.div<{ $colorBorder: string; $colorBgLay
         grid-template-columns: 2fr 1fr;
         background-color: ${(props) => props.$colorBgLayout};
         border-bottom: 1px solid ${(props) => props.$colorBorder};
+        font-weight: 500;
     }
 
     .adp-available-columns-header {

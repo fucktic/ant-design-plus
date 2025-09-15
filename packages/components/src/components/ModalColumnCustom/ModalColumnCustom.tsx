@@ -1,5 +1,5 @@
 import { useState, useCallback, useMemo, useEffect } from 'react'
-import { Modal, TableProps, Input, Checkbox, Button, Typography, theme } from 'antd'
+import { Modal, TableProps, Input, Checkbox, Button, Typography, theme, Space } from 'antd'
 
 const { Link } = Typography
 import { CloseOutlined } from '@ant-design/icons'
@@ -10,23 +10,27 @@ import { TEXTS, MODAL_CONFIG } from './constants'
 import { StyledModalContent, DeleteIcon } from './styles'
 
 export const ModalColumnCustom = (props: ModalColumnCustomProps) => {
-    const { open, onClose, onSubmit, options, defaultSelecteds } = props
+    const {
+        open,
+        onClose,
+        onSubmit,
+        options,
+        defaultSelecteds,
+        headerLabels = {
+            column: '可添加列',
+            onlySelected: '仅看已选列',
+            all: '添加全部列',
+            selected: '已选',
+        },
+    } = props
+
     const { token } = theme.useToken()
 
     // 状态管理
     const [selectedColumns, setSelectedColumns] = useState<ColumnCustomType[]>([])
-    const [searchValue, setSearchValue] = useState<string>('')
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
-
-    // 根据搜索值过滤显示的选项
-    const displayedOptions = useMemo(() => {
-        if (!searchValue.trim()) return options
-        return options.filter(
-            (option) =>
-                option.label.toLowerCase().includes(searchValue.toLowerCase()) ||
-                option.value.toLowerCase().includes(searchValue.toLowerCase())
-        )
-    }, [options, searchValue])
+    const [onlySelected, setOnlySelected] = useState<boolean>(false)
+    const [displayedOptions, setDisplayedOptions] = useState<ColumnCustomType[]>(options)
 
     // 初始化选中列
     useEffect(() => {
@@ -35,11 +39,6 @@ export const ModalColumnCustom = (props: ModalColumnCustomProps) => {
             setSelectedColumns(defaultColumns)
         }
     }, [open, options, defaultSelecteds])
-
-    // 更新搜索显示的选项
-    const updateDisplayedOptions = useCallback((value: string) => {
-        setSearchValue(value)
-    }, [])
 
     // 重置已选列为默认选中状态
     const resetToDefaultSelections = useCallback(() => {
@@ -123,17 +122,60 @@ export const ModalColumnCustom = (props: ModalColumnCustomProps) => {
             },
         ]
     }, [handleRemoveColumn, defaultSelecteds])
+    // 计算"全选"复选框状态
+    const isAllSelected = useMemo(() => {
+        return selectedColumns.length > 0 && displayedOptions.length === selectedColumns.length
+    }, [selectedColumns.length, displayedOptions.length])
+
+    const isIndeterminate = useMemo(() => {
+        return selectedColumns.length > 0 && selectedColumns.length < displayedOptions.length
+    }, [selectedColumns.length, displayedOptions.length])
+
+    // 处理全选/取消全选操作
+    const handleSelectAllToggle = useCallback(
+        (checked: boolean) => {
+            if (checked) {
+                setSelectedColumns(displayedOptions)
+            } else {
+                resetToDefaultSelections()
+            }
+        },
+        [displayedOptions, resetToDefaultSelections]
+    )
+
+    // 处理列选项的显示逻辑（搜索过滤 + 已选过滤）
+    const updateDisplayedOptions = useCallback(
+        (searchKeyword?: string) => {
+            let filteredOptions = [...options]
+
+            // 如果开启"仅看已选项"，过滤出已选中的列
+            if (onlySelected) {
+                filteredOptions = filteredOptions.filter((item) =>
+                    selectedColumns.some((selected) => selected.value === item.value)
+                )
+            }
+
+            // 如果有搜索关键词，进一步过滤
+            if (searchKeyword) {
+                filteredOptions = filteredOptions.filter((item) =>
+                    item.label.includes(searchKeyword)
+                )
+            }
+
+            setDisplayedOptions(filteredOptions)
+        },
+        [options, onlySelected, selectedColumns]
+    )
 
     // 清理状态
     useEffect(() => {
-        if (!open) {
-            setSearchValue('')
-        }
-
         return () => {
             resetToDefaultSelections()
         }
-    }, [open, resetToDefaultSelections])
+    }, [])
+    useEffect(() => {
+        updateDisplayedOptions()
+    }, [updateDisplayedOptions])
 
     return (
         <Modal
@@ -162,11 +204,28 @@ export const ModalColumnCustom = (props: ModalColumnCustomProps) => {
                     <div className="adp-header-row">
                         <div className="adp-available-columns-header">
                             <div className="adp-header-title">
-                                可选（{displayedOptions.length}）
+                                {headerLabels.column}（{displayedOptions.length}）
                             </div>
+                            <Space>
+                                <Checkbox
+                                    checked={onlySelected}
+                                    onChange={(e) => setOnlySelected(e.target.checked)}
+                                >
+                                    {headerLabels.onlySelected}
+                                </Checkbox>
+                                <Checkbox
+                                    onChange={(e) => handleSelectAllToggle(e.target.checked)}
+                                    checked={isAllSelected}
+                                    indeterminate={isIndeterminate}
+                                >
+                                    {headerLabels.all}
+                                </Checkbox>
+                            </Space>
                         </div>
                         <div className="adp-selected-columns-header">
-                            <div className="adp-header-title">已选（{selectedColumns.length}）</div>
+                            <div className="adp-header-title">
+                                {headerLabels.selected}（{selectedColumns.length}）
+                            </div>
                             <Link
                                 className="adp-clear-link"
                                 onClick={clearAllSelections}

@@ -24,6 +24,12 @@ export interface ModalColumnCustomProps {
     options: ColumnCustomType[]
     /** 默认选中的列值 */
     defaultSelecteds: string[]
+    headerLabels?: {
+        column: string
+        onlySelected: string
+        all: string
+        selected: string
+    }
 }
 
 /**
