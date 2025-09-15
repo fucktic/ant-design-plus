@@ -87,6 +87,24 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             ],
         },
         {
+            key: 'feedback',
+            label: <div>反馈</div>,
+            type: 'group' as const,
+            children: [
+                {
+                    key: '/feedback/modal-column-custom',
+                    label: (
+                        <Link
+                            to="/feedback/modal-column-custom"
+                            className="text-gray-700 dark:text-gray-300 hover:text-blue-600"
+                        >
+                            ModalColumnCustom 自定义列
+                        </Link>
+                    ),
+                },
+            ],
+        },
+        {
             key: 'other',
             label: <div>其它</div>,
             type: 'group' as const,

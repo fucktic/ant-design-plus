@@ -9,8 +9,8 @@
     ],
     "scripts": {
         "dev": "pnpm --filter @ant-design-plus/docs dev",
-        "build": "pnpm --filter ant-design-plus-ui build:test",
-        "build:pro": "pnpm --filter ant-design-plus-ui build",
+        "build": "pnpm --filter ant-design-plus-ui build",
+        "build:pro": "pnpm --filter ant-design-plus-ui build:pro",
         "build:docs": "pnpm --filter @ant-design-plus/docs build:test",
         "build:docs:pro": "pnpm --filter @ant-design-plus/docs build",
         "build:all": "pnpm build && pnpm build:docs",

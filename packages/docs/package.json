@@ -1,13 +1,13 @@
 {
     "name": "@ant-design-plus/docs",
-    "version": "1.0.9",
+    "version": "1.1.0",
     "description": "Documentation site for Ant Design Plus components",
     "private": true,
     "type": "module",
     "scripts": {
         "dev": "vite --port 3000",
-        "build": "node ../../scripts/bump-docs.cjs && tsc && vite build",
-        "build:pro": "tsc && vite build",
+        "build:pro": "node ../../scripts/bump-docs.cjs && tsc && vite build",
+        "build": "tsc && vite build",
         "preview": "vite preview --port 3000"
     },
     "dependencies": {

@@ -29,3 +29,9 @@ export type {
 export { default as TableDragHandle } from './components/TableDragHandle'
 export { TableDragHandle as _TableDragHandle } from './components/TableDragHandle'
 export type { TableDragHandleProps } from './components/TableDragHandle/types'
+
+// ModalColumnCustom
+export { default as ModalColumnCustom } from './components/ModalColumnCustom'
+export { ModalColumnCustom as _ModalColumnCustom } from './components/ModalColumnCustom'
+export type { ModalColumnCustomProps, ColumnCustomType } from './components/ModalColumnCustom'
+
