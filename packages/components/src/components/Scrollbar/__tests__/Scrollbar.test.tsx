@@ -38,29 +38,31 @@ vi.mock('../hooks/useScrollbarCalculation', () => ({
 
 vi.mock('../hooks/useScrollbarDrag', () => ({
     useScrollbarDrag: () => ({
-        isDragging: false,
-        handleMouseDown: vi.fn(),
+        handleVerticalMouseDown: vi.fn(),
+        handleHorizontalMouseDown: vi.fn(),
     }),
 }))
 
 vi.mock('../hooks/useScrollbarState', () => ({
     useScrollbarState: () => ({
         scrollbarState: {
-            verticalScrollbar: {
-                visible: true,
-                thumbHeight: 50,
-                thumbTop: 0,
-                trackHeight: 200,
-            },
-            horizontalScrollbar: {
-                visible: false,
-                thumbWidth: 0,
-                thumbLeft: 0,
-                trackWidth: 0,
-            },
+            needVertical: true,
+            needHorizontal: false,
+            verticalThumbHeight: 50,
+            verticalThumbTop: 0,
+            horizontalThumbWidth: 0,
+            horizontalThumbLeft: 0,
         },
-        updateScrollbarState: vi.fn(),
+        isDragging: false,
+        isHovered: false,
+        isVisible: true,
+        setDraggingState: vi.fn(),
+        handleMouseEnter: vi.fn(),
+        handleMouseLeave: vi.fn(),
+        handleScroll: vi.fn(),
+        handleResize: vi.fn(),
         setUpdateCallback: vi.fn(),
+        refresh: vi.fn(),
     }),
 }))
 
@@ -85,42 +87,36 @@ describe('Scrollbar', () => {
 
     it('应该渲染滚动条容器', () => {
         render(
-            <Scrollbar data-testid="scrollbar">
+            <Scrollbar>
                 <div>Test Content</div>
             </Scrollbar>
         )
 
-        const container = screen.getByTestId('scrollbar')
+        const container = document.querySelector('.adp-scrollbar-container')
         expect(container).toBeInTheDocument()
     })
 
     it('应该支持自定义类名', () => {
         render(
-            <Scrollbar
-                className="custom-scrollbar"
-                data-testid="scrollbar"
-            >
+            <Scrollbar className="custom-scrollbar">
                 <div>Test Content</div>
             </Scrollbar>
         )
 
-        const container = screen.getByTestId('scrollbar')
+        const container = document.querySelector('.adp-scrollbar-container')
         expect(container).toHaveClass('custom-scrollbar')
     })
 
     it('应该支持自定义样式', () => {
         const customStyle = { backgroundColor: 'red' }
         render(
-            <Scrollbar
-                style={customStyle}
-                data-testid="scrollbar"
-            >
+            <Scrollbar style={customStyle}>
                 <div>Test Content</div>
             </Scrollbar>
         )
 
-        const container = screen.getByTestId('scrollbar')
-        expect(container).toHaveStyle('background-color: red')
+        const container = document.querySelector('.adp-scrollbar-container')
+        expect(container).toHaveStyle('background-color: rgb(255, 0, 0)')
     })
 
     it('应该支持滚动事件回调', () => {
@@ -131,7 +127,7 @@ describe('Scrollbar', () => {
             </Scrollbar>
         )
 
-        const contentWrapper = screen.getByRole('region')
+        const contentWrapper = document.querySelector('.adp-scrollbar-content-wrapper')!
         fireEvent.scroll(contentWrapper, { target: { scrollTop: 100 } })
 
         expect(onScroll).toHaveBeenCalled()
@@ -145,7 +141,7 @@ describe('Scrollbar', () => {
             </Scrollbar>
         )
 
-        const contentWrapper = screen.getByRole('region')
+        const contentWrapper = document.querySelector('.adp-scrollbar-content-wrapper')!
         // 模拟滚动到底部
         Object.defineProperty(contentWrapper, 'scrollTop', { value: 800, writable: true })
         Object.defineProperty(contentWrapper, 'scrollHeight', { value: 1000, writable: true })
@@ -167,98 +163,77 @@ describe('Scrollbar', () => {
         )
 
         // 由于我们 mock 了 hooks，这里主要测试 props 传递
-        expect(screen.getByTestId('scrollbar')).toBeInTheDocument()
+        expect(document.querySelector('.adp-scrollbar-container')).toBeInTheDocument()
     })
 
     it('应该支持禁用垂直滚动条', () => {
         render(
-            <Scrollbar
-                showVertical={false}
-                data-testid="scrollbar"
-            >
+            <Scrollbar showVertical={false}>
                 <div>Test Content</div>
             </Scrollbar>
         )
 
-        expect(screen.getByTestId('scrollbar')).toBeInTheDocument()
+        expect(document.querySelector('.adp-scrollbar-container')).toBeInTheDocument()
     })
 
     it('应该支持自定义滚动条大小', () => {
         render(
-            <Scrollbar
-                scrollbarSize={20}
-                data-testid="scrollbar"
-            >
+            <Scrollbar scrollbarSize={20}>
                 <div>Test Content</div>
             </Scrollbar>
         )
 
-        expect(screen.getByTestId('scrollbar')).toBeInTheDocument()
+        expect(document.querySelector('.adp-scrollbar-container')).toBeInTheDocument()
     })
 
     it('应该支持自定义滚动条颜色', () => {
         render(
-            <Scrollbar
-                scrollbarColor="#ff0000"
-                data-testid="scrollbar"
-            >
+            <Scrollbar scrollbarColor="#ff0000">
                 <div>Test Content</div>
             </Scrollbar>
         )
 
-        expect(screen.getByTestId('scrollbar')).toBeInTheDocument()
+        expect(document.querySelector('.adp-scrollbar-container')).toBeInTheDocument()
     })
 
     it('应该支持自定义轨道颜色', () => {
         render(
-            <Scrollbar
-                trackColor="#00ff00"
-                data-testid="scrollbar"
-            >
+            <Scrollbar trackColor="#00ff00">
                 <div>Test Content</div>
             </Scrollbar>
         )
 
-        expect(screen.getByTestId('scrollbar')).toBeInTheDocument()
+        expect(document.querySelector('.adp-scrollbar-container')).toBeInTheDocument()
     })
 
     it('应该支持自定义前缀类名', () => {
         render(
-            <Scrollbar
-                prefixCls="custom-prefix"
-                data-testid="scrollbar"
-            >
+            <Scrollbar prefixCls="custom-prefix">
                 <div>Test Content</div>
             </Scrollbar>
         )
 
-        expect(screen.getByTestId('scrollbar')).toBeInTheDocument()
+        expect(document.querySelector('.adp-scrollbar-container')).toBeInTheDocument()
     })
 
-    it('应该支持自动隐藏功能', () => {
+    it('应该支持禁用自动隐藏', () => {
         render(
-            <Scrollbar
-                autoHide={true}
-                data-testid="scrollbar"
-            >
+            <Scrollbar autoHide={false}>
                 <div>Test Content</div>
             </Scrollbar>
         )
 
-        expect(screen.getByTestId('scrollbar')).toBeInTheDocument()
+        expect(document.querySelector('.adp-scrollbar-container')).toBeInTheDocument()
     })
 
     it('应该支持自定义隐藏延迟', () => {
         render(
-            <Scrollbar
-                hideDelay={2000}
-                data-testid="scrollbar"
-            >
+            <Scrollbar hideDelay={2000}>
                 <div>Test Content</div>
             </Scrollbar>
         )
 
-        expect(screen.getByTestId('scrollbar')).toBeInTheDocument()
+        expect(document.querySelector('.adp-scrollbar-container')).toBeInTheDocument()
     })
 
     it('应该正确设置 displayName', () => {
@@ -298,19 +273,22 @@ describe('Scrollbar', () => {
     })
 
     it('应该处理空子元素', () => {
-        render(<Scrollbar data-testid="scrollbar">{null}</Scrollbar>)
+        render(<Scrollbar>{null}</Scrollbar>)
 
-        expect(screen.getByTestId('scrollbar')).toBeInTheDocument()
+        // 验证组件容器存在
+        expect(document.querySelector('.adp-scrollbar-container')).toBeInTheDocument()
     })
 
     it('应该处理多个子元素', () => {
         render(
-            <Scrollbar data-testid="scrollbar">
+            <Scrollbar>
                 <div>First Child</div>
                 <div>Second Child</div>
             </Scrollbar>
         )
 
+        // 验证组件容器存在
+        expect(document.querySelector('.adp-scrollbar-container')).toBeInTheDocument()
         expect(screen.getByText('First Child')).toBeInTheDocument()
         expect(screen.getByText('Second Child')).toBeInTheDocument()
     })
