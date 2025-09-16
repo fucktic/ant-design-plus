@@ -76,6 +76,8 @@ export interface ScrollbarProps {
     autoHide?: boolean
     /** 滚动条显示延迟（毫秒） */
     hideDelay?: number
+    /** 测试ID */
+    'data-testid'?: string
 }
 
 /**
