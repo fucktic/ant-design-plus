@@ -52,7 +52,7 @@ export const ModalColumnCustom = (props: ModalColumnCustomProps) => {
             )
             setSelectedColumns(defaultColumns)
         }
-    }, [open, options, defaultSelecteds, currentSelecteds])
+    }, [open])
 
     // 重置已选列为默认选中状态
     const resetToDefaultSelections = useCallback(() => {
