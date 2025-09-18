@@ -17,7 +17,15 @@ export default defineConfig({
         react(),
         dts({
             insertTypesEntry: true,
-            exclude: ['**/*.stories.tsx', '**/*.test.tsx'],
+            exclude: [
+                '**/*.stories.tsx',
+                '**/*.test.tsx',
+                '**/*.test.ts',
+                '**/*.spec.tsx',
+                '**/*.spec.ts',
+                '**/__tests__/**/*',
+                '**/test/**/*',
+            ],
         }),
     ],
     build: {
@@ -33,11 +41,19 @@ export default defineConfig({
                 globals: {
                     react: 'React',
                     'react-dom': 'ReactDOM',
-
                     '@ant-design/icons': 'AntdIcons',
                 },
             },
+            // 排除测试文件和相关目录
+            input: {
+                index: resolve(fileURLToPath(new URL('.', import.meta.url)), 'src/index.ts'),
+            },
         },
+        // 确保测试文件不被包含在构建中
+        copyPublicDir: false,
+        // 排除测试相关文件
+        target: 'es2015',
+        minify: true,
     },
     test: {
         globals: true,

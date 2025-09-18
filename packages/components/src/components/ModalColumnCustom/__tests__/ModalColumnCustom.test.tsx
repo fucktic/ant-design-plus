@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
 import React from 'react'
@@ -145,7 +145,6 @@ describe('ModalColumnCustom', () => {
     })
 
     it('不应该允许取消选择默认选中的列', async () => {
-        const user = userEvent.setup()
         render(<ModalColumnCustom {...defaultProps} />)
 
         // 等待组件渲染完成

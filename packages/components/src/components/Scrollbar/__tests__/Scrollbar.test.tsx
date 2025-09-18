@@ -1,6 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 import Scrollbar from '../Scrollbar'
 import { ScrollbarRef } from '../types'
 import { useRef } from 'react'
