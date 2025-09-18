@@ -14,7 +14,7 @@ import {
 const { Link } = Typography
 import { CloseOutlined, SearchOutlined } from '@ant-design/icons'
 import Scrollbar from '../Scrollbar/Scrollbar'
-import { TableDragHandle } from '../TableDragHandle'
+// import { TableDragHandle } from '../TableDragHandle'
 import { ColumnCustomType, ModalColumnCustomProps } from './types'
 import { TEXTS, MODAL_CONFIG } from './constants'
 import { StyledModalContent, DeleteIcon } from './styles'
@@ -108,7 +108,7 @@ export const ModalColumnCustom = (props: ModalColumnCustomProps) => {
         }
     }, [selectedColumns, onSubmit])
 
-    // 已选列表格的列配置
+    //@ts-ignore 已选列表格的列配置
     const selectedColumnsTableConfig: TableProps<ColumnCustomType>['columns'] = useMemo(() => {
         return [
             {
@@ -315,7 +315,7 @@ export const ModalColumnCustom = (props: ModalColumnCustomProps) => {
                         </Scrollbar>
 
                         {/* 右侧：已选列表格 */}
-                        <div className="adp-selected-columns-table">
+                        {/* <div className="adp-selected-columns-table">
                             <TableDragHandle<ColumnCustomType>
                                 dataSource={selectedColumns}
                                 columns={selectedColumnsTableConfig}
@@ -331,7 +331,7 @@ export const ModalColumnCustom = (props: ModalColumnCustomProps) => {
                                     setSelectedColumns(newDataSource)
                                 }
                             />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </StyledModalContent>
